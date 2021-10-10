@@ -1,0 +1,9 @@
+---
+pt-BR:
+  activerecord:
+    models:
+      employer: 'Contratador'
+    attributes:
+      employer:
+        password: 'Senha'
+
