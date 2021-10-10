@@ -1,0 +1,8 @@
+---
+pt-BR:
+  activerecord:
+    models:
+      freelancer: 'Autônomo'
+    attributes:
+      freelancer:
+        password: 'Senha'

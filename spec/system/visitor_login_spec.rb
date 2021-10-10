@@ -15,10 +15,33 @@ describe 'visitor login' do
                 click_on 'Entrar'
             end
 
-        expect(page).to have_content('Login efetuado com sucesso!')
-        expect(page).to have_content(elonmusk.email)
-        expect(page).to have_link('Logout')
-        expect(page).not_to have_link('Entrar')
-        end        
+            expect(page).to have_content('Login efetuado com sucesso!')
+            expect(page).to have_content(elonmusk.email)
+            expect(page).to have_link('Logout')
+            expect(page).not_to have_link('Entrar')
+        end
+    end
+    context "as freelancer" do
+        it "sucessfully" do
+            chaves = Freelancer.create!(email: 'bolanos@sbt.com.br', password: '123456')
+
+            visit root_path
+            click_on 'Entrar como freelancer'
+            fill_in 'Email', with: chaves .email
+            fill_in 'Senha', with: chaves .password
+            #tem dois Entrar na tela: um para fazer 
+            #o Login e outro para submeter o formulário, por isso:
+            within 'form' do
+                click_on 'Entrar'
+            end
+
+            expect(page).to have_content('Login efetuado com sucesso!')
+            expect(page).to have_content(chaves.email)
+            expect(page).to have_link('Logout')
+            expect(page).not_to have_link('Entrar')
+
+        end
+
+        
     end    
 end
