@@ -24,11 +24,25 @@
           
         
   <% else %>     
-          <span class="navbar-text mx-3"> Faça seu login para pedir ou oferecer um freelance!</span>  
-          <a class="nav-link mx-3"><%= link_to 'Entrar como contratador', new_employer_session_path %></a>
-          <a class="nav-link mx-3"><%= link_to 'Entrar como freelancer', new_freelancer_session_path %></a>
-
-      <% end %>     
+          <span class="navbar-text mx-3"> Faça seu login para buscar ou oferecer um freelance!</span>  
+          <ul>
+            <li>
+            <a class="nav-link mx-3"><%= link_to 'Entrar como contratador', new_employer_session_path %></a>
+            </li>
+            <li>
+            <%= link_to 'Cadastre-se como contratador',  new_employer_registration_url %></a>
+            </li>
+          </ul>
+          <ul>
+            <li>
+            <a class="nav-link mx-3"><%= link_to 'Entrar como freelancer', new_freelancer_session_path %></a>
+            </li>
+            <li>
+            <%= link_to 'Cadastre-se como freelancer',  new_employer_registration_url %></a>
+            </li>
+      <% end %>   
+      <br>   
+      <%= link_to "Voltar para pagina principal", root_path%>
   </nav>
 
   <body>

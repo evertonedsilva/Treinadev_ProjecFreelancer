@@ -2,7 +2,21 @@
 pt-BR:
   activerecord:
     models:
-      freelancer: 'Autônomo'
+      freelancer: 'Trabalhador'
     attributes:
       freelancer:
-        password: 'Senha'
+        current_password: Chave atual
+        email: E-mail
+        password: Chave de acesso
+        password_confirmation: Confirme
+        remember_me: Gravar senha
+  freelancer:
+    create:
+      success: 'Bem-vindo! Você se cadastrou com sucesso!'
+  devise:
+    sessions:
+      signed_in: 'Você ta dentro!'
+    confirmations:
+      registrations:
+      destroyed: "Você saiu, até mais"
+      signed_up: "Nossa, pensei que não vinha"
