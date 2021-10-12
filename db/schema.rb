@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_10_204015) do
+ActiveRecord::Schema.define(version: 2021_10_12_005711) do
+
+  create_table "areas", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "employers", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -32,8 +38,24 @@ ActiveRecord::Schema.define(version: 2021_10_10_204015) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "lancer_info_id"
     t.index ["email"], name: "index_freelancers_on_email", unique: true
+    t.index ["lancer_info_id"], name: "index_freelancers_on_lancer_info_id"
     t.index ["reset_password_token"], name: "index_freelancers_on_reset_password_token", unique: true
   end
 
+  create_table "lancer_infos", force: :cascade do |t|
+    t.string "name"
+    t.string "social"
+    t.date "birth"
+    t.string "adress"
+    t.string "city"
+    t.string "formation"
+    t.string "description"
+    t.text "experiences"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  add_foreign_key "freelancers", "lancer_infos"
 end

@@ -4,6 +4,7 @@ describe 'visitor login' do
     context "as employer" do
         it 'sucessfully' do
             elonmusk = Employer.create!(email: 'elon@musk.com.br', password: '123456')
+            
 
             visit root_path
             click_on 'Entrar como contratador'

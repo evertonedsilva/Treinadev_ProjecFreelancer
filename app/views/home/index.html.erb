@@ -2,16 +2,22 @@
 <h3>Easylancer<h3>
 <h3>Bem vindo a sua plataforma de freelance!<h3>
 
-<h3>Crie sua conta!<h3>
+<% if not (freelancer_signed_in? or employer_signed_in?) %> 
+    <% 'Crie sua conta!' %> 
+    <%= link_to 'REGISTRE-SE AQUI COMO FREELANCER',  new_freelancer_registration_url %></a>
+    <br>
+    <%= link_to 'REGISTR-SE AQUI COMO CONTRATADOR',  new_employer_registration_url %></a>
+<% end %>
 
 
-<%= link_to 'REGISTRE-SE AQUI COMO FREELANCER',  new_employer_registration_url %></a>
 
-<br>
-<br>
-<br>
-
-<%= link_to 'REGISTR-SE AQUI COMO CONTRATADOR',  new_employer_registration_url %></a>
+<% if freelancer_signed_in? %> 
+    <a class="nav-link"><%= link_to 'Meu perfil', lancer_profile_path %></a>
+    <% if (current_freelancer.lancer_info_id).blank? %> 
+    <%= link_to 'Complete seu perfil para acessar ',  new_lancer_info_path %></a>
+<% end %>
+    
+<% end %>
 
 
 
