@@ -5,4 +5,5 @@ class Freelancer < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one :lancer_info
+  
 end

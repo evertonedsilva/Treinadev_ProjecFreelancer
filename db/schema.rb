@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_13_165455) do
+ActiveRecord::Schema.define(version: 2021_10_14_191240) do
 
   create_table "areas", force: :cascade do |t|
     t.string "name"
@@ -38,9 +38,7 @@ ActiveRecord::Schema.define(version: 2021_10_13_165455) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "lancer_info_id"
     t.index ["email"], name: "index_freelancers_on_email", unique: true
-    t.index ["lancer_info_id"], name: "index_freelancers_on_lancer_info_id"
     t.index ["reset_password_token"], name: "index_freelancers_on_reset_password_token", unique: true
   end
 
@@ -56,9 +54,11 @@ ActiveRecord::Schema.define(version: 2021_10_13_165455) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "area_id", null: false
+    t.integer "freelancer_id", null: false
     t.index ["area_id"], name: "index_lancer_infos_on_area_id"
+    t.index ["freelancer_id"], name: "index_lancer_infos_on_freelancer_id"
   end
 
-  add_foreign_key "freelancers", "lancer_infos"
   add_foreign_key "lancer_infos", "areas"
+  add_foreign_key "lancer_infos", "freelancers"
 end

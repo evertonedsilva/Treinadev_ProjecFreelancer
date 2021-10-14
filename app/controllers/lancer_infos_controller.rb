@@ -1,4 +1,7 @@
 class LancerInfosController < ApplicationController
+    before_action :authenticate_freelancer!, only: [:new, :create, :update]
+
+    
     def new
         @profile = LancerInfo.new    
     end
@@ -6,15 +9,16 @@ class LancerInfosController < ApplicationController
     def show
         @profile = LancerInfo.find(params[:id])
         @areas = Area.all
+        
     end
 
-    def create        
-        @profile = LancerInfo.new(profile_params)    
-
-        @profile.save        
+    def create     
+        @profile = LancerInfo.new(profile_params)
+           
+        @profile.freelancer = current_freelancer      
 
        
-       render :show     
+        render :show     
     
     
     end
