@@ -6,12 +6,12 @@ Nome: <%= @profile.name%>
 <br>
 Nome social: <%= @profile.social%>
 <br>
-Nascimento: <%= l @profile.birth, format: :short%>
+Nascimento: <%= l @profile.birth%>
 <br>
 Endereço: <%= @profile.adress%>
  - <%= @profile.city %>
 <br>
-Especialidade: <%= @profile.area.name %>
+Especialidade: <%= Area.find(@profile.area_id).name %>
 
 Formação: <%= @profile.formation %>
 <br>

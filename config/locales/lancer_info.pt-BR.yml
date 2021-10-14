@@ -1,0 +1,16 @@
+---
+pt-BR:
+  activerecord:
+    models:
+      lancer_info: Informações pessoais
+    attributes:
+      lancer_info:
+        name: Nome
+        social: Nome social
+        birth: Nascimento
+        adress: Endereço
+        city: Cidade
+        formation: Formação
+        description: Descrição
+        experiences: Experiências
+

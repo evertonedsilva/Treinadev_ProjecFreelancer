@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_12_005711) do
+ActiveRecord::Schema.define(version: 2021_10_13_165455) do
 
   create_table "areas", force: :cascade do |t|
     t.string "name"
@@ -55,7 +55,10 @@ ActiveRecord::Schema.define(version: 2021_10_12_005711) do
     t.text "experiences"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "area_id", null: false
+    t.index ["area_id"], name: "index_lancer_infos_on_area_id"
   end
 
   add_foreign_key "freelancers", "lancer_infos"
+  add_foreign_key "lancer_infos", "areas"
 end
