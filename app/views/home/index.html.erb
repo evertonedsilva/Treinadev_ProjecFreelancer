@@ -12,7 +12,7 @@
 
 
 <% if freelancer_signed_in? %> 
-    <a class="nav-link"><%= link_to 'Meu perfil', lancer_profile_path %></a>
+    <a class="nav-link"><%= link_to 'Meu perfil', lancer_infos_path %></a>
     <% if (current_freelancer.lancer_info_id).blank? %> 
     <%= link_to 'Complete seu perfil para acessar ',  new_lancer_info_path %></a>
 <% end %>
