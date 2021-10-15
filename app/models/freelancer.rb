@@ -4,6 +4,6 @@ class Freelancer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_one :lancer_info
+  has_many :lancer_info
   
 end

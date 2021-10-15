@@ -1,11 +1,12 @@
 class LancerInfosController < ApplicationController
     before_action :authenticate_freelancer!, only: [:new, :create, :update]
 
-    def index
-        @profile = current_freelancer.lancer_info
+    def index        
+        @profile = LancerInfo.find(current_freelancer.id)
     end
     def new
         @profile = LancerInfo.new  
+        @current_freelancer= current_freelancer
 
     end
 
@@ -16,13 +17,12 @@ class LancerInfosController < ApplicationController
     end
 
     def create     
+
         @profile = LancerInfo.new(profile_params)
 
-        current_freelancer.lancer_info=@profile
-
-        current_freelancer.save
-
-        @profile.save
+        @profile.freelancer = current_freelancer    
+        
+        @profile.save		
 
        # @profile.freelancer_id = current_freelancer.id
            
