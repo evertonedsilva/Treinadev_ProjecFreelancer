@@ -1,0 +1,27 @@
+<h3> Meu perfil <h3>
+
+
+
+Nome: <%= @profile.name%>
+<br>
+Nome social: <%= @profile.social%>
+<br>
+Nascimento: <%= l @profile.birth%>
+<br>
+Endereço: <%= @profile.adress%>
+ - <%= @profile.city %>
+<br>
+Especialidade: <%= Area.find(@profile.area_id).name %>
+
+Formação: <%= @profile.formation %>
+<br>
+Descrição: <%= @profile.description %>
+<br>
+Formação: <%= @profile.formation %>
+<br>
+Experiências: <%= @profile.experiences%>
+<br>
+
+
+<br>
+<br>

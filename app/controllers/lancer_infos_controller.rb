@@ -1,9 +1,12 @@
 class LancerInfosController < ApplicationController
     before_action :authenticate_freelancer!, only: [:new, :create, :update]
 
-    
+    def index
+        @profile = current_freelancer.lancer_info
+    end
     def new
-        @profile = LancerInfo.new    
+        @profile = LancerInfo.new  
+
     end
 
     def show
@@ -14,8 +17,16 @@ class LancerInfosController < ApplicationController
 
     def create     
         @profile = LancerInfo.new(profile_params)
+
+        current_freelancer.lancer_info=@profile
+
+        current_freelancer.save
+
+        @profile.save
+
+       # @profile.freelancer_id = current_freelancer.id
            
-        @profile.freelancer = current_freelancer      
+        #@profile.freelancer = current_freelancer      
 
        
         render :show     
