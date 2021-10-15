@@ -2,7 +2,11 @@ require 'rails_helper'
 
 describe 'freelancer acess projects conditioning' do
     it 'have all lancer_info' do            
-        
+        sirigueijo = Employer.create!(email: 'siri@burguer.br', password: '123456789')
+        atendente = Project.create!(title:'Atendente',employer:sirigueijo )
+        atendente.closed!
+        cozinheiro = Project.create!(title:'Cozinheiro',employer:sirigueijo )
+
         especialidade = Area.create!(name: 'Carisma')
         julio = Freelancer.create!(email: 'julio@max.com.br', password: '123456789')
         profile = LancerInfo.create!(name:'Julio César' , social:'Julinho', birth:'10/12/1005', 
@@ -14,10 +18,12 @@ describe 'freelancer acess projects conditioning' do
         
         login_as julio, scope: :freelancer       
         visit root_path
+        click_on 'Projetos'
 
         
-        expect(page).to have_content('Meu perfil') 
-        expect(page).to have_content('Projetos')             
+        expect(page).to have_content('Projetos disponíveis') 
+        expect(page).to_not have_content('Atendente')  
+        expect(page).to have_content('Cozinheiro')                    
 
 
     end
