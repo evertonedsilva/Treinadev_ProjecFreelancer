@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   resources :projects, only: [ :index, :show, :new, :create] do
     get 'employer_profile', on: :collection 
     get 'avaiable', on: :collection
+    resources :proposal, only: [ :index, :show, :new, :create] do     
+      post 'accept', on: :member
+      end
   end
 
 end

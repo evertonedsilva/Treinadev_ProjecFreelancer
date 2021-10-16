@@ -137,7 +137,6 @@ describe 'freelancer acess projects' do
 
         
         expect(page).to have_content('Dados do projeto') 
-        expect(page).to have_content('Título: Vaga de cozinheiro no Sirigueijo Burguer') 
         expect(page).to have_content('Descrição: Procuro alguém para preparo de hamburgueres de Siri') 
         expect(page).to have_content('Remuneração máxima por hora: R$ 500,00') 
         expect(page).to have_content('Colaboradore(s) requerido(s): 1') 
