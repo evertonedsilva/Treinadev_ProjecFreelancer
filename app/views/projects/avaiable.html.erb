@@ -1,0 +1,10 @@
+<h3> Projetos disponíveis: <h3>
+
+<%if @projects.empty? %> 
+   <h5> Nenhum projeto disponível </h5>
+<%else%>       
+   <%@projects.each do |p|%>
+   <%= p.title%>
+   <%end%> 
+
+<%end%>  

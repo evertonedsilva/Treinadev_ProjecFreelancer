@@ -1,0 +1,18 @@
+---
+pt-BR:
+  activerecord:
+    models:
+      project: Projetos
+    attributes:
+      project:
+        title: Título
+        description: Descrição
+        value_hour: Remuneração máxima por hora
+        limit_proposal: Data limite para candidaturas
+        start_date: Previsão de início
+        end_date: Previsão de términio
+        squad_num: Número de colaboradores
+        type: Presencial
+        adress: Endereço
+        city: Cidade
+        employer_feed: Avaliação final   

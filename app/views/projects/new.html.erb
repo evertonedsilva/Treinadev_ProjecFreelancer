@@ -1,0 +1,67 @@
+<% if @project.errors.any? %>
+  <ul>
+  <% @project.errors.full_messages.each do |e|%>
+   <li><%= e %>
+   <%end%>
+  </ul>
+<%end%>
+
+
+<%=form_with model: @project do |f| %>
+    <div>   
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+    </div>
+    
+    <div> 
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+    </div>
+    
+    <div> 
+    <%= f.label :value_hour %>
+    <%= f.text_field :value_hour %>
+    </div>
+
+    <div> 
+    <%= f.label  :limit_proposal  %>
+    <%= f.date_field  :limit_proposal  %>
+    </div>
+
+    <div> 
+    <%= f.label  :start_date  %>
+    <%= f.date_field  :start_date  %>
+    </div>
+
+    <div> 
+    <%= f.label  :end_date  %>
+    <%= f.date_field  :end_date  %>
+    </div>
+   
+    <div> 
+    <%= f.label :squad_num %>
+    <%= f.number_field :squad_num %>
+    </div>
+
+    <div>
+    <%= f.check_box :type %>
+    <%= f.label :type, 'Presencial?' %>
+    </div>
+
+    <div> 
+    <%= f.label :adress %>
+    <%= f.text_field :adress %>
+    </div>
+
+    <div> 
+    <%= f.label :city %>
+    <%= f.text_field :city %>
+    </div>
+
+    <div> 
+    <%= f.label :area_id, "Especialidade desejada" %> 
+    <%= f.collection_select :area_id, Area.all, :id, :name, prompt: 'Escolha um tipo' %>
+    </div>    
+
+   <%= f.submit 'Enviar' %>
+<% end %>

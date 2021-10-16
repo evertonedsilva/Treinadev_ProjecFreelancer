@@ -18,7 +18,7 @@
     <% elsif (LancerInfo.find_by(freelancer:current_freelancer).errors.empty?)%>     
         <a class="nav-link"><%= link_to 'Meu perfil', lancer_infos_path %></a>
         <br>        
-        <a class="nav-link"><%= link_to 'Projetos', projects_path %></a>    
+        <a class="nav-link"><%= link_to 'Projetos', avaiable_projects_path %></a>    
         
     <% end %>
     

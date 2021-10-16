@@ -1,10 +1,33 @@
-<h3> Projetos disponíveis: <h3>
+<h3> Dados do projeto <h3>
 
-<%if @projects.empty? %> 
-   <h5> Nenhum projeto disponível </h5>
-<%else%>       
-   <%@projects.each do |p|%>
-   <%= p.title%>
-   <%end%> 
 
-<%end%>  
+Título: <%= @project.title%>
+<br>
+Descrição: <%= @project.description %>
+<br>
+Remuneração máxima por hora: <%= number_to_currency(@project.value_hour)%>
+<br>
+<br>
+Colaboradore(s) requerido(s): <%= @project.squad_num%>
+<br>
+<br>
+Data limite para candidaturas: <%= l @project.limit_proposal%>
+<br>
+Previsão de início: <%= l @project.start_date%>
+<br>
+Previsão de fim: <%= l @project.end_date%>
+<br>
+Especialidade desejada: <%= Area.find(@project.area_id).name %>
+<br>
+<br>
+Presencial: <%= @project.type ?  'Nao' : 'Sim' %>
+<br>
+Endereço: <%= @project.adress%>
+ - <%= @project.city %>
+
+
+
+
+<br>
+<br>
+<%= link_to "Voltar", root_path%>

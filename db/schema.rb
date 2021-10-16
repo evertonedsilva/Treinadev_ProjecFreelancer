@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_15_161028) do
+ActiveRecord::Schema.define(version: 2021_10_16_142044) do
 
   create_table "areas", force: :cascade do |t|
     t.string "name"
@@ -74,10 +74,14 @@ ActiveRecord::Schema.define(version: 2021_10_15_161028) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "status", default: 5
     t.integer "employer_id", null: false
+    t.date "limit_proposal"
+    t.integer "area_id"
+    t.index ["area_id"], name: "index_projects_on_area_id"
     t.index ["employer_id"], name: "index_projects_on_employer_id"
   end
 
   add_foreign_key "lancer_infos", "areas"
   add_foreign_key "lancer_infos", "freelancers"
+  add_foreign_key "projects", "areas"
   add_foreign_key "projects", "employers"
 end
