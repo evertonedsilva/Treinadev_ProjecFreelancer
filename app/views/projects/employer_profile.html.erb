@@ -7,7 +7,8 @@
    <h5> Você ainda não possui projetos</h5>
 <%else%>       
    <%@projects.each do |p|%>
-   <%= p.title%>
+   <%= link_to p.title, project_path(p.id)%>
+ 
    <%end%> 
 
 <%end%>  

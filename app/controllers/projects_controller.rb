@@ -1,14 +1,9 @@
 class ProjectsController < ApplicationController
     
 
-    def show
-        @projects= Project.all 
-    end
-
-
-    def employer_profile                    
-        @projects = current_employer.projects
-    end
+    def show        
+        @project = Project.find(params[:id])
+    end   
 
     def new
         @project = Project.new  
@@ -31,6 +26,10 @@ class ProjectsController < ApplicationController
 
     def avaiable  
         @projects= Project.open           
+    end
+
+    def employer_profile                    
+        @projects = current_employer.projects
     end
 
     private            

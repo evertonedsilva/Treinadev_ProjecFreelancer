@@ -7,9 +7,7 @@ Descrição: <%= @project.description %>
 <br>
 Remuneração máxima por hora: <%= number_to_currency(@project.value_hour)%>
 <br>
-<br>
 Colaboradore(s) requerido(s): <%= @project.squad_num%>
-<br>
 <br>
 Data limite para candidaturas: <%= l @project.limit_proposal%>
 <br>
@@ -18,7 +16,6 @@ Previsão de início: <%= l @project.start_date%>
 Previsão de fim: <%= l @project.end_date%>
 <br>
 Especialidade desejada: <%= Area.find(@project.area_id).name %>
-<br>
 <br>
 Remoto: <%= @project.remote ?  'Sim' : 'Não' %>
 <br>
