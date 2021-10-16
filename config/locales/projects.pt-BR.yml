@@ -13,6 +13,7 @@ pt-BR:
         end_date: Previsão de términio
         squad_num: Número de colaboradores
         type: Presencial
+        remote: Remoto
         adress: Endereço
         city: Cidade
         employer_feed: Avaliação final   

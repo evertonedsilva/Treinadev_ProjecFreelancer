@@ -45,9 +45,9 @@ class ProjectsController < ApplicationController
             :end_date,
             :squad_num,
             :adress ,
-            :city ,
-            :formation ,            
-            :area_id
+            :city ,            
+            :area_id,
+            :remote
         )
         
     end

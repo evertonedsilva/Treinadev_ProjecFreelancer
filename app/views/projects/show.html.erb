@@ -20,7 +20,7 @@ Previsão de fim: <%= l @project.end_date%>
 Especialidade desejada: <%= Area.find(@project.area_id).name %>
 <br>
 <br>
-Presencial: <%= @project.type ?  'Nao' : 'Sim' %>
+Remoto: <%= @project.remote ?  'Sim' : 'Não' %>
 <br>
 Endereço: <%= @project.adress%>
  - <%= @project.city %>

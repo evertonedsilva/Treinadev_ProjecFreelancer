@@ -18,7 +18,7 @@ describe 'sucessfully' do
         fill_in 'Previsão de início', with: '10/12/2021' 
         fill_in 'Previsão de términio', with: '10/01/2022' 
         fill_in 'Número de colaboradores', with: '1'
-        check 'Presencial'           
+        check 'Remoto'           
         fill_in 'Endereço', with: 'Fenda do Bikini'
         fill_in 'Cidade', with: 'Oceano Pacífico'             
         click_on 'Enviar'
@@ -32,7 +32,7 @@ describe 'sucessfully' do
         expect(page).to have_content("Data limite para candidaturas: 10/11/2021") 
         expect(page).to have_content("Previsão de início: 10/12/2021") 
         expect(page).to have_content("Previsão de fim: 10/01/2022") 
-        expect(page).to have_content("Presencial: Sim")           
+        expect(page).to have_content("Remoto: Sim")           
 
 
 

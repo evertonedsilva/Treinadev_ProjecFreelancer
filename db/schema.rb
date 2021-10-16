@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_16_142044) do
+ActiveRecord::Schema.define(version: 2021_10_16_174449) do
 
   create_table "areas", force: :cascade do |t|
     t.string "name"
@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(version: 2021_10_16_142044) do
     t.integer "employer_id", null: false
     t.date "limit_proposal"
     t.integer "area_id"
+    t.boolean "remote"
     t.index ["area_id"], name: "index_projects_on_area_id"
     t.index ["employer_id"], name: "index_projects_on_employer_id"
   end
