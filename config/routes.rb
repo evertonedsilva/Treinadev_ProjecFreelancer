@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :lancer_infos, only: [:index, :show, :new, :create, :update]
   resources :freelancers, only: [ :show ]
   resources :projects, only: [ :index, :show, :new] do
-    get 'my_profile', on: :collection 
+    get 'employer_profile', on: :collection 
   end
 
 end

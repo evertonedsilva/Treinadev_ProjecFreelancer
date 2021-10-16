@@ -1,0 +1,13 @@
+<h1>Meus Imóveis </h1>
+<br>
+
+<h3> Projetos: <h3>
+
+<%if @projects.empty? %> 
+   <h5> Você ainda não possui projetos</h5>
+<%else%>       
+   <%@projects.each do |p|%>
+   <%= p.title%>
+   <%end%> 
+
+<%end%>  

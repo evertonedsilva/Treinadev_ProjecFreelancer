@@ -9,7 +9,7 @@ class ProjectsController < ApplicationController
     end
 
 
-    def my_project
+    def employer_profile                    
         @projects = current_employer.projects
     end
 
