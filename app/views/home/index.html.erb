@@ -20,9 +20,16 @@
         <br>        
         <a class="nav-link"><%= link_to 'Projetos', projects_path %></a>    
         
-<% end %>
+    <% end %>
     
 <% end %>
+
+
+<% if employer_signed_in? %> 
+     <%= link_to 'Meus projetos ',  my_profile_projects_path %></a>
+     <%= link_to 'Criar um projeto',  new_project_path %></a>
+<% end %>
+
 
 
 
