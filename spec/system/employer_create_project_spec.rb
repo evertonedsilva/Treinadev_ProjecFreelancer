@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-describe 'sucessfully' do
-    it 'create a project' do
+describe 'create a project' do
+    it  'sucessufully' do
         sirigueijo = Employer.create!(email: 'siri@burguer.br', password: '123456789')
         especialidade = Area.create!(name: 'Cozinheiro')
 
@@ -32,11 +32,33 @@ describe 'sucessfully' do
         expect(page).to have_content("Data limite para candidaturas: 10/11/2021") 
         expect(page).to have_content("Previsão de início: 10/12/2021") 
         expect(page).to have_content("Previsão de fim: 10/01/2022") 
-        expect(page).to have_content("Remoto: Sim")           
+        expect(page).to have_content("Remoto: Sim")        
 
+    end
 
+    it 'and must fill all fields' do
+        sirigueijo = Employer.create!(email: 'siri@burguer.br', password: '123456789')
+        especialidade = Area.create!(name: 'Cozinheiro')
+
+        login_as sirigueijo, scope: :employer      
+        visit root_path
+        click_on 'Criar um projeto'        
+                
+        click_on 'Enviar'
 
         
+        expect(page).to have_content("Título não pode ficar em branco")
+        expect(page).to have_content("Descrição não pode ficar em branco")
+        expect(page).to have_content("Remuneração máxima por hora não pode ficar em branco")
+        expect(page).to have_content("Data limite para candidaturas não pode ficar em branco")
+        expect(page).to have_content("Previsão de início não pode ficar em branco")
+        expect(page).to have_content("Previsão de términio não pode ficar em branco")
+        expect(page).to have_content("Endereço não pode ficar em branco")
+        expect(page).to have_content("Cidade não pode ficar em branco")
+        expect(page).to have_content("Area não pode ficar em branco")
+        expect(page).to have_content("Remoto não pode ficar em branco")
+        
+
         
 
     end
