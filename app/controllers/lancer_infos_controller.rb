@@ -6,7 +6,7 @@ class LancerInfosController < ApplicationController
     end
     def new
         @profile = LancerInfo.new  
-        @current_freelancer= current_freelancer
+       
 
     end
 
@@ -22,14 +22,11 @@ class LancerInfosController < ApplicationController
 
         @profile.freelancer = current_freelancer    
         
-        @profile.save		
-
-       # @profile.freelancer_id = current_freelancer.id
-           
-        #@profile.freelancer = current_freelancer      
-
-       
-        render :show     
+        if @profile.save       
+            render :show           
+        else
+            render :new
+        end
     
     
     end

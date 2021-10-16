@@ -13,7 +13,7 @@ describe 'Freelancer view own empty profile' do
         visit root_path
 
         #assert
-        expect(page).to have_link('Complete seu perfil para acessar', href: new_lancer_info_path )
+        expect(page).to have_link('Crie seu perfil para acessar', href: new_lancer_info_path )
         #rota customizada my_properties adicionada em properties (routes)
     end
 
@@ -24,7 +24,7 @@ describe 'Freelancer view own empty profile' do
         login_as julio, scope: :freelancer
 
         visit root_path
-        click_on'Complete seu perfil para acessar'
+        click_on'Crie seu perfil para acessar'
         fill_in 'Nome', with: 'Julio César'
         fill_in 'Nome social', with: 'Julinho'
         fill_in 'Nascimento', with: '10/12/1005' 
@@ -47,29 +47,29 @@ describe 'Freelancer view own empty profile' do
           
     
     end
-    it 'completing its profile' do
+    it 'not completing its profile' do
        
-        Area.create!(name: 'Carisma')
-        julio = Freelancer.create!(email: 'julio@max.com.br', password: '123456789')
-        login_as julio, scope: :freelancer
-
+        julio = Freelancer.create!(email: 'julio@max.com.br', password: '123456789')  
+        
+        
+        
+        login_as julio, scope: :freelancer       
         visit root_path
-        click_on'Complete seu perfil para acessar'
-        fill_in 'Nome', with: 'Julio César'
-        fill_in 'Nome social', with: 'Julinho'
-        fill_in 'Nascimento', with: '10/12/1005' 
-        fill_in 'Endereço', with: 'Rua das Pedras num XX'
-        fill_in 'Cidade', with: 'Roma'
-        fill_in 'Formação', with: 'Filosofia e Arte da Guerra'
-        fill_in 'Descrição', with: 'Otimo líder e extrategista'
-        fill_in 'Experiências', with: 'Fui general, Imperador e namorei a Cleopatra'
-        select 'Carisma', from: 'Especialidade'
+        click_on 'Crie seu perfil para acessar'
         click_on 'Enviar'
-        click_on 'Voltar para pagina principal'
+
+        expect(page).to have_content('Nome não pode ficar em branco') 
+        expect(page).to have_content('Nascimento não pode ficar em branco') 
+        expect(page).to have_content('Endereço não pode ficar em branco') 
+        expect(page).to have_content('Cidade não pode ficar em branco') 
+        expect(page).to have_content('Formação não pode ficar em branco') 
+        expect(page).to have_content('Descrição não pode ficar em branco') 
+        expect(page).to have_content('Experiências não pode ficar em branco') 
+        expect(page).to have_content('Nome não pode ficar em branco') 
+        expect(page).to have_content('Area não pode ficar em branco')
 
 
-        #expect(page).to_not have_link('Complete seu perfil para acessar', href: new_lancer_info_path )
-        expect(page).to have_link('Meu perfil', href: lancer_infos_path )
+       
     end
 
 

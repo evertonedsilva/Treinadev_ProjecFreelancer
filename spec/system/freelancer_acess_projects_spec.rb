@@ -23,9 +23,31 @@ describe 'freelancer acess projects conditioning' do
         
         expect(page).to have_content('Projetos disponíveis') 
         expect(page).to_not have_content('Atendente')  
-        expect(page).to have_content('Cozinheiro')                    
-
-
+        expect(page).to have_content('Cozinheiro')    
     end
+
+    it 'have not all lancer_info' do 
+        sirigueijo = Employer.create!(email: 'siri@burguer.br', password: '123456789')
+        atendente = Project.create!(title:'Atendente',employer:sirigueijo )
+        atendente.closed!
+        cozinheiro = Project.create!(title:'Cozinheiro',employer:sirigueijo )
+
+        especialidade = Area.create!(name: 'Carisma')
+        julio = Freelancer.create!(email: 'julio@max.com.br', password: '123456789')
+        profile = LancerInfo.create(freelancer: julio )
+        
+        
+        login_as julio, scope: :freelancer       
+        visit root_path
+        
+
+        expect(page).to have_content('Crie seu perfil para acessar')
+        expect(page).to_not have_content('Projetos disponíveis')
+        expect(page).to_not have_content('Meu perfil')
+        
+
+    
+    end
+
 
 end

@@ -30,8 +30,7 @@ describe 'visitor login' do
             click_on 'Entrar como freelancer'
             fill_in 'E-mail', with: chaves .email
             fill_in 'Chave de acesso', with: chaves .password
-            #tem dois Entrar na tela: um para fazer 
-            #o Login e outro para submeter o formulário, por isso:
+            
             within 'form' do
                 click_on 'Entrar'
             end
@@ -40,6 +39,7 @@ describe 'visitor login' do
             expect(page).to have_content(chaves.email)
             expect(page).to have_link('Logout')
             expect(page).not_to have_link('Entrar')
+            expect(page).to have_link('Crie seu perfil para acessar')
         end        
     end    
 end

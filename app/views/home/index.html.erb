@@ -6,21 +6,19 @@
     <% 'Crie sua conta!' %> 
     <%= link_to 'REGISTRE-SE AQUI COMO FREELANCER',  new_freelancer_registration_url %></a>
     <br>
-    <%= link_to 'REGISTR-SE AQUI COMO CONTRATADOR',  new_employer_registration_url %></a>
+    <%= link_to 'REGISTRE-SE AQUI COMO CONTRATADOR',  new_employer_registration_url %></a>
 <% end %>
 
 
 
 <% if freelancer_signed_in? %>           
    
-    <% if (current_freelancer.lancer_info_ids.empty?) %> 
-        <%= link_to 'Complete seu perfil para acessar ',  new_lancer_info_path %></a>
-    <% else %> 
+    <% if (LancerInfo.find_by(freelancer:current_freelancer)==nil) %> 
+        <%= link_to 'Crie seu perfil para acessar ',  new_lancer_info_path %></a>
+    <% elsif (LancerInfo.find_by(freelancer:current_freelancer).errors.empty?)%>     
         <a class="nav-link"><%= link_to 'Meu perfil', lancer_infos_path %></a>
         <br>        
-
-        <a class="nav-link"><%= link_to 'Projetos', projects_path %></a>
-        
+        <a class="nav-link"><%= link_to 'Projetos', projects_path %></a>    
         
 <% end %>
     
