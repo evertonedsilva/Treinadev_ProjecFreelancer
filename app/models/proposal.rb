@@ -4,4 +4,10 @@ class Proposal < ApplicationRecord
 
     enum status: {pending: 5, accepted: 10, rejected: 20}
 
+    validates :message,
+    :week_availability,
+    :expected_end,
+    :claim_hour, 
+     presence: true
+
 end

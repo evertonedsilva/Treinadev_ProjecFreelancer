@@ -7,10 +7,13 @@ class ProposalsController < ApplicationController
     def create
         @proposal = current_freelancer.proposal.new(proposal_params)
         @proposal.project = Project.find(params[:project_id])
-        @proposal.save
-    
-        redirect_to @proposal, notice: t('.success')
-                          #pode ser apenas notice: 'Pedido de reserva enviado com sucesso'
+
+        if @proposal.save    
+            redirect_to @proposal, notice: t('.success')  
+        else
+            redirect_to project_path(params[:project_id]), notice: t('.unsuccess') 
+        end
+
     end
 
     private
