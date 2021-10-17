@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_16_232102) do
+ActiveRecord::Schema.define(version: 2021_10_17_114716) do
 
   create_table "areas", force: :cascade do |t|
     t.string "name"
@@ -87,6 +87,11 @@ ActiveRecord::Schema.define(version: 2021_10_16_232102) do
     t.integer "project_id", null: false
     t.integer "freelancer_id", null: false
     t.integer "status", default: 5
+    t.text "refused_justify"
+    t.text "final_feed"
+    t.text "message"
+    t.decimal "week_availability"
+    t.date "expected_end"
     t.index ["freelancer_id"], name: "index_proposals_on_freelancer_id"
     t.index ["project_id"], name: "index_proposals_on_project_id"
   end

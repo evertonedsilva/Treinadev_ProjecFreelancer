@@ -1,0 +1,15 @@
+---
+pt-BR:
+  
+  active_record:    
+    model:
+      proposal: 'Proposta'
+    attributes:
+      proposal:
+        message: Mensagem
+        week_availability: Horas disponíveis por semana
+        expected_end: Fim experado proposto
+
+  proposals:
+    create:
+      success: 'Cadidatura realizada com sucesso'

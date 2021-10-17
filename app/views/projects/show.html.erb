@@ -23,7 +23,32 @@ Endereço: <%= @project.adress%>
  - <%= @project.city %>
 
 
+<% if employer_signed_in?%>
+      
+    
+<% elsif freelancer_signed_in?%>
+    
 
-<br>
-<br>
+     <% if (@project.status=='open')%> 
+
+        <%=form_with model: @proposal,url: project_proposals_path(@project.id) do |f| %> 
+        <%= f.label :message, 'Mensagem' %>
+        <%= f.text_field :message %> 
+        <br>
+        <%= f.label :week_availability, 'Horas disponíveis por semana' %>
+        <%= f.number_field :week_availability %> 
+        <br>
+        <%= f.label :expected_end, 'Entrega prevista' %>
+        <%= f.number_field :expected_end %> 
+        <br>    
+        <%= f.submit 'Enviar proposta' %>  
+        <% end %>  
+
+    <% end %>
+
+<% end %>
+
+
+
+
 <%= link_to "Voltar", root_path%>
