@@ -1,0 +1,11 @@
+<h3> Projetos que participo: <h3>
+
+<%if @proposals.empty? %> 
+   <h5> Você possui nenhum projeto </h5>
+<%else%>       
+   <%@proposals.each do |p|%>
+   <%project=Project.find(p.project_id)%>
+    <%= link_to project.title, project_path(project.id)%>
+    <br>
+   <%end%> 
+<%end%>  

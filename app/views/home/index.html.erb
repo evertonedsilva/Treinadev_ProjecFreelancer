@@ -21,15 +21,18 @@
         <br>  
          <a class="nav-link"><%= link_to 'Editar perfil', edit_lancer_info_path(current_freelancer.id) %></a>
         <br>         
-        <a class="nav-link"><%= link_to 'Projetos', avaiable_projects_path %></a>    
+        <a class="nav-link"><%= link_to 'Acesse aos projetos disponíveis', avaiable_projects_path %></a>  
+        <br>         
+        <a class="nav-link"><%= link_to 'Meus Projetos', freelancer_proposals_path %></a>      
         
     <% end %>
     
 <% end %>
 
-
+<br> <br> 
 <% if employer_signed_in? %> 
      <%= link_to 'Meus projetos ',  employer_profile_projects_path %></a>
+     <br> 
      <%= link_to 'Criar um projeto',  new_project_path %></a>
 <% end %>
 

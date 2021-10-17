@@ -27,7 +27,7 @@ describe 'create a proposal' do
 
         login_as bobesponja, scope: :freelancer       
         visit root_path
-        click_on 'Projetos'
+        click_on 'Acesse aos projetos disponíveis'
         click_on 'Vaga de cozinheiro no Sirigueijo Burguer'
         fill_in 'Mensagem', with: 'Contrata eu'
         fill_in 'Horas disponíveis por semana', with: 3
@@ -68,7 +68,7 @@ describe 'create a proposal' do
     
             login_as bobesponja, scope: :freelancer       
             visit root_path
-            click_on 'Projetos'
+            click_on 'Acesse aos projetos disponíveis'
             click_on 'Vaga de cozinheiro no Sirigueijo Burguer'
             click_on 'Enviar proposta'  
     

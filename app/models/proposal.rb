@@ -2,7 +2,7 @@ class Proposal < ApplicationRecord
     belongs_to :project
     belongs_to :freelancer
 
-    enum status: {pending: 5, accepted: 10, rejected: 20}
+    enum status: {pending: 5, accepted: 10, rejected: 20, canceled: 10}
 
     validates :message,
     :week_availability,
