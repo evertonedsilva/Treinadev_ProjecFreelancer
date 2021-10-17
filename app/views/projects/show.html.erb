@@ -21,15 +21,24 @@ Remoto: <%= @project.remote ?  'Sim' : 'Não' %>
 <br>
 Endereço: <%= @project.adress%>
  - <%= @project.city %>
+ <br>
 
 
 <% if employer_signed_in?%>
       
     
 <% elsif freelancer_signed_in?%>
+    <% emails=[]%>     
+    <% @project.proposal.each do |p| %> 
+        <% emails<<p.freelancer.email %>    
+    <% end %> 
     
 
-     <% if (@project.status=='open')%> 
+
+    <% if (emails.include?(current_freelancer.email))%> 
+        Você já enviou uma proposta para esse projeto
+
+     <% elsif (@project.status=='open')%> 
 
         <%=form_with model: @proposal,url: project_proposals_path(@project.id) do |f| %> 
         <%= f.label :message, 'Mensagem' %>
@@ -39,10 +48,15 @@ Endereço: <%= @project.adress%>
         <%= f.number_field :week_availability %> 
         <br>
         <%= f.label :expected_end, 'Entrega prevista' %>
-        <%= f.number_field :expected_end %> 
+        <%= f.date_field :expected_end %> 
+        </div>
+        <%= f.label :claim_hour, 'Pretensão salarial por hora' %>
+        <%= f.number_field :claim_hour %>        
         <br>    
         <%= f.submit 'Enviar proposta' %>  
-        <% end %>  
+        <% end %> 
+    <% elsif %>
+        Esse projeto não esta mais disponível    
 
     <% end %>
 

@@ -9,6 +9,8 @@ pt-BR:
         message: Mensagem
         week_availability: Horas disponíveis por semana
         expected_end: Fim experado proposto
+        claim_hour: Pretensão salarial por hora
+
 
   proposals:
     create:

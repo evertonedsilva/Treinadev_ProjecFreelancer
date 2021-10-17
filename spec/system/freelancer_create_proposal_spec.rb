@@ -29,9 +29,21 @@ describe 'create a proposal' do
         visit root_path
         click_on 'Projetos'
         click_on 'Vaga de cozinheiro no Sirigueijo Burguer'
+        fill_in 'Mensagem', with: 'Contrata eu'
+        fill_in 'Horas disponíveis por semana', with: 3
+        fill_in 'Entrega prevista', with: '10/01/2022'
+        fill_in 'Pretensão salarial por hora', with: '50'
+
+
         click_on 'Enviar proposta'  
 
         expect(page).to have_content('Cadidatura realizada com sucesso')
+        expect(page).to have_content('Mensagem: Contrata eu')
+        expect(page).to have_content('Previsão de término: 10/01/2022')
+        expect(page).to have_content('Horas disponíveis por semana: 3')
+        expect(page).to have_content('Valor pedido por hora: R$ 50,00')
+  
     end
+   
     
 end

@@ -1,1 +1,40 @@
-Dados da proposta
+
+<h3>Dados da proposta para <%= @proposal.project.title %></h3>
+
+  Mensagem: <%= @proposal.message %>
+  <br>
+  Previsão de término: <%= l @proposal.expected_end %>
+  <br>
+  Horas disponíveis por semana: <%= @proposal.week_availability %>
+  <br>
+  Valor pedido por hora: <%= number_to_currency @proposal.claim_hour %>
+  <br>
+
+
+
+<h3> Reveja os dados do projeto <h3>
+
+Descrição: <%= @proposal.project.description %>
+<br>
+Remuneração máxima por hora: <%= number_to_currency(@proposal.project.value_hour)%>
+<br>
+Colaboradore(s) requerido(s): <%= @proposal.project.squad_num%>
+<br>
+Data limite para candidaturas: <%= l @proposal.project.limit_proposal%>
+<br>
+Previsão de início: <%= l @proposal.project.start_date%>
+<br>
+Previsão de fim: <%= l @proposal.project.end_date%>
+<br>
+Especialidade desejada: <%= Area.find(@proposal.project.area_id).name %>
+<br>
+Remoto: <%= @proposal.project.remote ?  'Sim' : 'Não' %>
+<br>
+Endereço: <%= @proposal.project.adress%>
+ - <%= @proposal.project.city %>
+ <br>
+
+
+
+<%= link_to "Voltar para página principal", root_path%>
+ 

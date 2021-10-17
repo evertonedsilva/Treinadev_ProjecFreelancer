@@ -16,7 +16,10 @@ class ProposalsController < ApplicationController
     private
 
     def proposal_params
-        params.require(:proposal).permit()
+        params.require(:proposal).permit(:message,
+            :week_availability,
+            :expected_end,
+            :claim_hour)
     end
 
 
