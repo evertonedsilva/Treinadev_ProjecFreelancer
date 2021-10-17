@@ -36,7 +36,9 @@ Endereço: <%= @project.adress%>
 
 
     <% if (emails.include?(current_freelancer.email))%> 
-        Você já enviou uma proposta para esse projeto
+        <br>
+        <br>
+        Você já enviou uma proposta para esse projeto!
 
      <% elsif (@project.status=='open')%> 
 
@@ -56,13 +58,15 @@ Endereço: <%= @project.adress%>
         <%= f.submit 'Enviar proposta' %>  
         <% end %> 
     <% elsif %>
-        Esse projeto não esta mais disponível    
+        <br>
+        <br>
+        Esse projeto não esta mais disponível!   
 
     <% end %>
 
 <% end %>
 
 
-
-
+<br>
+<br>
 <%= link_to "Voltar", root_path%>

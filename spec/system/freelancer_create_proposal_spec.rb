@@ -76,13 +76,6 @@ describe 'create a proposal' do
             expect(page).to have_content('Candidatura não efetuada - possui erros')            
             expect(page).to have_content('Vaga de cozinheiro no Sirigueijo Burguer')
 
-
-
-
-
-
-            
-      
         end
    
     

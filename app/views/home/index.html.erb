@@ -15,9 +15,12 @@
    
     <% if (LancerInfo.find_by(freelancer:current_freelancer)==nil) %> 
         <%= link_to 'Crie seu perfil para acessar ',  new_lancer_info_path %></a>
+        <br> 
     <% elsif (LancerInfo.find_by(freelancer:current_freelancer).errors.empty?)%>     
         <a class="nav-link"><%= link_to 'Meu perfil', lancer_infos_path %></a>
-        <br>        
+        <br>  
+         <a class="nav-link"><%= link_to 'Editar perfil', edit_lancer_info_path(current_freelancer.id) %></a>
+        <br>         
         <a class="nav-link"><%= link_to 'Projetos', avaiable_projects_path %></a>    
         
     <% end %>
