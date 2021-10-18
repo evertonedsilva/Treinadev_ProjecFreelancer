@@ -1,5 +1,5 @@
 class FreelancersController < ApplicationController
-  before_action :authenticate_freelancer!, only: [:new, :create, :update]
+  before_action :authenticate_freelancer!, only: [:show]
   def show
   end 
 

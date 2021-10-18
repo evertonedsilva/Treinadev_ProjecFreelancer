@@ -3,8 +3,10 @@ Rails.application.routes.draw do
   devise_for :employers
   root to: 'home#index' 
   get 'freelancer_proposals', to: 'freelancers#freelancer_proposals'
+ 
+
   resources :lancer_infos, only: [:index, :show, :new, :create, :edit, :update]  
-  resources :projects, only: [ :index, :show, :new, :create] do
+  resources :projects, only: [ :index, :show, :new, :create, :update] do
     get 'employer_profile', on: :collection 
     get 'avaiable', on: :collection
     resources :proposals, only: [ :index, :show, :new, :create] do     

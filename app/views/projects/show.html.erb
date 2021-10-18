@@ -24,8 +24,23 @@ Endereço: <%= @project.adress%>
  <br>
 
 
-<% if employer_signed_in?%>
-      
+<% if employer_signed_in? && @project.employer==current_employer%>
+
+    <% @project.proposal.each do |proposal| %>
+
+            <h4>Proposta de <%= link_to proposal.freelancer.email,lancer_info_path(proposal.freelancer_id)  %></h4>
+            Mensagem: <%= proposal.message %>
+            <br>
+            Previsão de término: <%= l proposal.expected_end %>
+            <br>
+            Horas disponíveis por semana: <%= proposal.week_availability %>
+            <br>
+            Valor pedido por hora: <%= number_to_currency proposal.claim_hour %>
+            <br>
+
+     <% end %> 
+            
+             
     
 <% elsif freelancer_signed_in?%>
     <% emails=[]%>     
@@ -70,3 +85,6 @@ Endereço: <%= @project.adress%>
 <br>
 <br>
 <%= link_to "Voltar", root_path%>
+
+
+
