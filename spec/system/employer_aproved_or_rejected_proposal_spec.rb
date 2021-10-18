@@ -61,11 +61,6 @@ describe 'employer acess proposal' do
         expect(page).to have_content('Proposta de julio@max.com.br') 
         expect(page).to have_content('Proposta de bob@sponj.com.br') 
         expect(page).to_not have_content('Contrata eu') 
-
-
-        
-
-       
         
     end
 end
