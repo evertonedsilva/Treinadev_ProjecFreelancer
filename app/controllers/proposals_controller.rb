@@ -16,6 +16,12 @@ class ProposalsController < ApplicationController
 
     end
 
+    def accept
+        @proposal = Proposal.find(params[:id])
+        @proposal.accepted!
+        redirect_to @proposal, notice: t('.success') 
+    end
+
     private
 
     def proposal_params

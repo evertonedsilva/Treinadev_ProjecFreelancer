@@ -16,3 +16,6 @@ pt-BR:
     create:
       success: 'Cadidatura realizada com sucesso'
       unsuccess: 'Candidatura não efetuada - possui erros:'
+    accept:
+      success: 'Proposta aceita com sucesso'
+      unsuccess: 'Proposta não aceita - possui erros:'
