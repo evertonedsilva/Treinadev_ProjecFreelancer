@@ -1,5 +1,5 @@
 class ProposalsController < ApplicationController
-
+    before_action :authenticate_freelancer!, only: [:new, :create, :update, :destroy]
     def show
         @proposal = Proposal.find(params[:id])
     end

@@ -1,6 +1,5 @@
-class ProjectsController < ApplicationController
-    
-
+class ProjectsController < ApplicationController    
+    before_action :authenticate_employer!, only: [:new, :create]
     def show        
         @project = Project.find(params[:id])
         @proposal= Proposal.new

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-describe 'frelancer acess submitted proposal projects' do
-    it 'sucessfully' do
+describe 'frelancer delete proposal' do
+    it 'sucessfully and redirected to projects page' do
              
         sirigueijo = Employer.create!(email: 'siri@burguer.br', password: '123456789')
         cozinha = Area.create!(name: 'Cozinha')                
@@ -55,6 +55,7 @@ describe 'frelancer acess submitted proposal projects' do
        
         expect(page).to have_content('Proposta excluida com sucesso!')
         expect(page).to_not have_content('Vaga de astronauta na SpaceX')
+        expect(page).to have_content('Vaga de cozinheiro no Sirigueijo Burguer')
 
 
 
