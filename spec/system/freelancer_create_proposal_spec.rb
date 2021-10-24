@@ -4,7 +4,7 @@ describe 'create a proposal' do
     it 'sucessufully' do
     sirigueijo = Employer.create!(email: 'siri@burguer.br', password: '123456789')        
     especialidade = Area.create!(name: 'Cozinheiro')        
-    cozinheiro = Project.create!(title:'Cozinheiro',employer:sirigueijo, 
+    cozinheiro = Project.create!(employer:sirigueijo, 
         title: 'Vaga de cozinheiro no Sirigueijo Burguer',  
         description:'Procuro alguém para preparo de hamburgueres de Siri', 
         value_hour:'500',
@@ -27,7 +27,7 @@ describe 'create a proposal' do
 
         login_as bobesponja, scope: :freelancer       
         visit root_path
-        click_on 'Acesse aos projetos disponíveis'
+        click_on 'Projetos disponíveis'
         click_on 'Vaga de cozinheiro no Sirigueijo Burguer'
         fill_in 'Mensagem', with: 'Contrata eu'
         fill_in 'Horas disponíveis por semana', with: 3
@@ -45,7 +45,7 @@ describe 'create a proposal' do
     it 'unsucessufully' do
         sirigueijo = Employer.create!(email: 'siri@burguer.br', password: '123456789')        
         especialidade = Area.create!(name: 'Cozinheiro')        
-        cozinheiro = Project.create!(title:'Cozinheiro',employer:sirigueijo, 
+        cozinheiro = Project.create!(employer:sirigueijo, 
             title: 'Vaga de cozinheiro no Sirigueijo Burguer',  
             description:'Procuro alguém para preparo de hamburgueres de Siri', 
             value_hour:'500',
@@ -68,7 +68,7 @@ describe 'create a proposal' do
     
             login_as bobesponja, scope: :freelancer       
             visit root_path
-            click_on 'Acesse aos projetos disponíveis'
+            click_on 'Projetos disponíveis'
             click_on 'Vaga de cozinheiro no Sirigueijo Burguer'
             click_on 'Enviar proposta'  
     

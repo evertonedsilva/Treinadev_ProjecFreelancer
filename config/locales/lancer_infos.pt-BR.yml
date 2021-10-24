@@ -16,6 +16,7 @@ pt-BR:
         
   lancer_infos:
     create:
-      success: 'Perfil criado com sucesso'
-      unsuccess: 'Perfil não criado - possui erros:'
+      success: 'Perfil criado com sucesso!'
+      unsuccess: 'Perfil não criado - possui erros'
+
    

@@ -47,9 +47,11 @@ Endereço: <%= @project.adress%>
             Previsão de término: <%= l proposal.expected_end %>            <br>
             Horas disponíveis por semana: <%= proposal.week_availability %>            <br>
             Valor pedido por hora: <%= number_to_currency proposal.claim_hour %>            <br>
-             <%= link_to 'Aceitar proposta de '+ proposal.freelancer.email,  accept_project_proposal_path(proposal.id), method: :post %>
+             <%= link_to 'Aceitar proposta de '+ proposal.freelancer.email,  
+             accept_project_proposal_path(proposal.id), method: :post %>
              <br>             
-             <%= link_to 'Recusar proposta de '+ proposal.freelancer.email,  reject_justify_project_proposal_path(proposal.id) %> <br> 
+             <%= link_to 'Recusar proposta de '+ proposal.freelancer.email,  
+             reject_justify_project_proposal_path(proposal.id) %> <br> 
       
             <br><br>
         <% end %>
@@ -62,7 +64,7 @@ Endereço: <%= @project.adress%>
     <% emails=[]%>     
     <% @project.proposal.each do |p| %> 
         <% emails<<p.freelancer.email %>    
-    <% end %> 
+        <% end %> 
     
 
 
@@ -83,7 +85,7 @@ Endereço: <%= @project.adress%>
         <%= f.label :expected_end, 'Entrega prevista' %>
         <%= f.date_field :expected_end %> 
         <br>
-        <%= f.label :claim_hour, 'Pretensão salarial por hora' %>
+        <%= f.label :claim_hour, 'Pretensão salarial por hora - R$' %>
         <%= f.number_field :claim_hour %>        
         <br>    
         <%= f.submit 'Enviar proposta' %>  

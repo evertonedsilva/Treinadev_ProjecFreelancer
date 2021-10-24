@@ -1,10 +1,7 @@
 ---
 pt-BR:
-  pending: Pendente
-  accepted: Aceita
-  rejected: Rejeitada
-  canceled: Cancelada
-  active_record:    
+ 
+  activerecord:    
     model:
       proposal: Proposta
     attributes:
@@ -13,7 +10,12 @@ pt-BR:
         week_availability: Horas disponíveis por semana
         expected_end: Fim experado proposto
         claim_hour: Pretensão salarial por hora
-        refused_justify: Justificativa para recusar
+        refused_justify: Justificativa para recusar        
+        statuses:
+          pending: Pendente
+          accepted: Aceita
+          rejected: Rejeitada
+          canceled: Cancelada
 
 
   proposals:

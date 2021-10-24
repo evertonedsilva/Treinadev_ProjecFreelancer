@@ -41,7 +41,7 @@ describe 'freelancer acess projects' do
         
         login_as julio, scope: :freelancer       
         visit root_path
-        click_on 'Acesse aos projetos disponíveis'
+        click_on 'Projetos disponíveis'
 
         
         expect(page).to have_content('Projetos disponíveis') 
@@ -132,7 +132,7 @@ describe 'freelancer acess projects' do
         
         login_as julio, scope: :freelancer       
         visit root_path
-        click_on 'Acesse aos projetos disponíveis'
+        click_on 'Projetos disponíveis'
         click_on 'Vaga de cozinheiro no Sirigueijo Burguer'
 
         

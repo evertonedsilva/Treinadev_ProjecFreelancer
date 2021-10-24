@@ -15,14 +15,15 @@
   <% if employer_signed_in? %>    
     <span class="navbar-text mx-3"> Você esta logado como o contratador:  
     <a class="nav-link active"> <%= current_employer.email %></a></span> 
-    <button type="button" class="btn btn-warning">
-    <%= link_to 'Logout', destroy_employer_session_path, method: :delete %>       
-          </button>
+    <button type="button" class="btn btn-warning mx-3">
+        <%= link_to 'Logout', destroy_employer_session_path, method: :delete %>       
+    </button>
   <% elsif freelancer_signed_in? %>  
     <span class="navbar-text mx-3"> Você esta logado como o freelancer </span>  
     <a class="nav-link active"> <%= current_freelancer.email %></a>
-    <a class="nav-link active mx-3"> <%= link_to 'Logout', destroy_freelancer_session_path, method: :delete %></a>   
-        
+     <button type="button" class="btn btn-warning mx-3">
+        <%= link_to 'Logout', destroy_freelancer_session_path, method: :delete %>   
+      </button>
           
         
   <% else %>     

@@ -14,7 +14,7 @@ describe 'Freelancer view own empty profile' do
 
         #assert
         expect(page).to have_link('Crie seu perfil para acessar', href: new_lancer_info_path )
-        #rota customizada my_properties adicionada em properties (routes)
+       
     end
 
     it 'completing its profile' do
@@ -36,6 +36,8 @@ describe 'Freelancer view own empty profile' do
         select 'Carisma', from: 'Especialidade'
         click_on 'Enviar'
 
+        
+        expect(page).to have_content('Perfil criado com sucesso')
         expect(page).to have_content('Julio César')
         expect(page).to have_content('Julinho')
         expect(page).to have_content("Nascimento: 10/12/1005")
@@ -58,6 +60,7 @@ describe 'Freelancer view own empty profile' do
         click_on 'Crie seu perfil para acessar'
         click_on 'Enviar'
 
+       
         expect(page).to have_content('Nome não pode ficar em branco') 
         expect(page).to have_content('Nascimento não pode ficar em branco') 
         expect(page).to have_content('Endereço não pode ficar em branco') 

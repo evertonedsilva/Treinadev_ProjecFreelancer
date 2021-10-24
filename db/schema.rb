@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_24_002806) do
+ActiveRecord::Schema.define(version: 2021_10_24_135545) do
 
   create_table "areas", force: :cascade do |t|
     t.string "name"
@@ -89,9 +89,9 @@ ActiveRecord::Schema.define(version: 2021_10_24_002806) do
     t.text "refused_justify"
     t.text "final_feed"
     t.text "message"
-    t.decimal "week_availability"
     t.date "expected_end"
     t.integer "claim_hour"
+    t.integer "week_availability"
     t.index ["freelancer_id"], name: "index_proposals_on_freelancer_id"
     t.index ["project_id"], name: "index_proposals_on_project_id"
   end

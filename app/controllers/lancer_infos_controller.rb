@@ -19,9 +19,9 @@ class LancerInfosController < ApplicationController
         @profile.freelancer = current_freelancer    
         
         if @profile.save       
-            render :show, notice: t('.success')           
+            redirect_to @profile, notice: t('.success')            
         else
-            render :new
+            render :new #, notice: t('.unsuccess')  -> parece que notice não funciona com render
         end
     end
 

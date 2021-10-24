@@ -4,8 +4,13 @@
    <h5> Você possui nenhum projeto </h5>
 <%else%>       
    <%@proposals.each do |p|%>
-   <%project=Project.find(p.project_id)%>
-    <%= link_to project.title, project_path(project.id)%>
+   
+    <%= link_to p.project.title, p %> -
+    <%= Proposal.human_enum_name(:status, p.status) %>
+    
+
+
+
     <br>
    <%end%> 
 <%end%>  
