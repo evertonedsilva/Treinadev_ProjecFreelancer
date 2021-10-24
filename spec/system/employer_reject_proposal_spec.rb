@@ -1,13 +1,13 @@
 require 'rails_helper'
 
-describe 'employer acess proposal' do
+describe 'employer rejected proposal' do
     it  'sucessufully' do
         cozinha = Area.create!(name: 'Cozinha')  
         piloto = Area.create!(name: 'Piloto') 
 
         sirigueijo = Employer.create!(email: 'siri@burguer.br', password: '123456789')
                      
-        cozinheiro = Project.create!(title:'Cozinheiro', employer:sirigueijo, 
+        cozinheiro = Project.create!( employer:sirigueijo, 
             title: 'Vaga de cozinheiro no Sirigueijo Burguer',  
             description:'Procuro alguém para preparo de hamburgueres de Siri', 
             value_hour:'500',
@@ -45,20 +45,23 @@ describe 'employer acess proposal' do
         visit root_path
         click_on 'Meus projetos'
         click_on 'Vaga de cozinheiro no Sirigueijo Burguer'
-        click_on 'Aceitar proposta de bob@sponj.com.br'
-       
+        click_on 'Recusar proposta de julio@max.com.br'
+        fill_in 'Recuso a proposta de julio@max.com.br porque', with: 'não sei se é uma boa'
+        click_on 'Confirmar'
         
-        expect(page).to have_content('Proposta aceita com sucesso') 
-        expect(page).to have_content('Vaga de cozinheiro no Sirigueijo Burguer')         
+        expect(page).to have_content('Justificativa registrada com sucesso!') 
+        expect(page).to have_content('Justificativa: não sei se é uma boa') 
+        expect(page).to have_content('Vaga de cozinheiro no Sirigueijo Burguer') 
         
     end
-    it  'and if accepted could not chage status to accepted' do
+
+    it  'and could not rejected again and see the proposal in menu' do
         cozinha = Area.create!(name: 'Cozinha')  
         piloto = Area.create!(name: 'Piloto') 
 
         sirigueijo = Employer.create!(email: 'siri@burguer.br', password: '123456789')
                      
-        cozinheiro = Project.create!(title:'Cozinheiro', employer:sirigueijo, 
+        cozinheiro = Project.create!( employer:sirigueijo, 
             title: 'Vaga de cozinheiro no Sirigueijo Burguer',  
             description:'Procuro alguém para preparo de hamburgueres de Siri', 
             value_hour:'500',
@@ -81,7 +84,7 @@ describe 'employer acess proposal' do
 
         proposal2 = Proposal.create!(message:'Não, contrata eu', week_availability: '50', 
                     expected_end:'01/01/2021',claim_hour: '30', project: cozinheiro, freelancer: julio)
-        
+        proposal2.rejected!
     
         bob = Freelancer.create!(email: 'bob@sponj.com.br', password: '123456789')
         profile_bob = LancerInfo.create!(name:'Bob esponja' , social:'Bob', birth:'10/10/2010', 
@@ -91,17 +94,20 @@ describe 'employer acess proposal' do
                 area: cozinha, freelancer: bob )
         proposal3 = Proposal.create!(message:'Não, contrata eu', week_availability: '50', 
                     expected_end:'01/01/2021',claim_hour: '30', project: cozinheiro, freelancer: bob)
-        proposal3.accepted!
            
             
         login_as sirigueijo, scope: :employer      
         visit root_path
         click_on 'Meus projetos'
         click_on 'Vaga de cozinheiro no Sirigueijo Burguer'
+       
         
-        expect(page).to_not have_content('Aceitar proposta de bob@sponj.com.br') 
-                
+        expect(page).to_not have_content('Proposta de julio@max.com.br') 
+        expect(page).to_not have_content('Recusar proposta de julio@max.com.br') 
+        
+      
         
     end
+
 
 end

@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     get 'avaiable', on: :collection
     resources :proposals, only: [ :index, :show, :new, :create] do     
       post 'accept', on: :member
+      get 'reject_justify', on: :member
+      post 'reject', on: :member
       end  
   end
   resources :proposals, only: [:show]

@@ -1,5 +1,5 @@
 
-<h3>Dados da proposta para <%= @proposal.project.title %></h3>
+<h3>Dados da proposta <%= @proposal.project.title %>:</h3>
 
   Mensagem: <%= @proposal.message %>
   <br>
@@ -9,10 +9,17 @@
   <br>
   Valor pedido por hora: <%= number_to_currency @proposal.claim_hour %>
   <br>
+  <br>
 
 
+ 
+  <% if @proposal.status == 'rejected' %>
+     <h3> Proposta recusada </h3>
+     Justificativa: <%= @proposal.refused_justify %> 
+  <%end%>
 
-<h3> Reveja os dados do projeto <h3>
+
+<h3> Reveja os dados do projeto: <h3>
 
 Descrição: <%= @proposal.project.description %>
 <br>
@@ -32,6 +39,7 @@ Remoto: <%= @proposal.project.remote ?  'Sim' : 'Não' %>
 <br>
 Endereço: <%= @proposal.project.adress%>
  - <%= @proposal.project.city %>
+ <br>
  <br>
 
 

@@ -17,9 +17,31 @@ class ProposalsController < ApplicationController
     end
 
     def accept
-        @proposal = Proposal.find(params[:id])
+        @proposal = Proposal.find(params[:project_id])
         @proposal.accepted!
         redirect_to @proposal, notice: t('.success') 
+    end
+
+    def reject_justify
+        @proposal = Proposal.find(params[:project_id])
+
+
+    end
+
+    def reject
+        @proposal = Proposal.find(params[:project_id])
+        @proposal.refused_justify=  params[:refused_justify]
+        @proposal.save
+
+        if (@proposal.refused_justify == nil) or (@proposal.refused_justify == '')
+            redirect_to  reject_justify_project_proposal_path(@proposal.id), 
+            notice: 'Justificativa não pode ficar em branco!'
+        else
+
+            @proposal.rejected!
+            redirect_to @proposal,
+            notice: 'Justificativa registrada com sucesso!'
+        end
     end
 
     private
@@ -29,6 +51,10 @@ class ProposalsController < ApplicationController
             :week_availability,
             :expected_end,
             :claim_hour)
+    end
+
+    def proposal_param_reject
+        params.require(:proposal).permit(:reject_justify)
     end
 
 

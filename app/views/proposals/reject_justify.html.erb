@@ -1,0 +1,21 @@
+
+
+<h3>Justificativa para recusa de proposta para o projeto: <br>
+ <%= @proposal.project.title %></h3>
+
+<%= form_with url: reject_project_proposal_path, method: :post do |f| %>          
+                 <%= f.label :refused_justify, 'Recuso a proposta de '+ @proposal.freelancer.email + ' porque' %> <br>
+                 <%= f.text_field :refused_justify %> <br>          
+                 <%= f.submit "Confirmar" %>
+<% end %>
+
+<h3>Dados da proposta</h3>
+
+  Mensagem: <%= @proposal.message %>
+  <br>
+  Previsão de término: <%= l @proposal.expected_end %>
+  <br>
+  Horas disponíveis por semana: <%= @proposal.week_availability %>
+  <br>
+  Valor pedido por hora: <%= number_to_currency @proposal.claim_hour %>
+  <br>
