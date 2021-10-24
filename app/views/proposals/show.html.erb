@@ -1,26 +1,29 @@
+<h3>Dados da proposta: </h3>
+Projeto:  <%= @proposal.project.title %>
+<br>
+Mensagem: <%= @proposal.message %>
+  <br>
+Previsão de término: <%= l @proposal.expected_end %>
+  <br>
+Horas disponíveis por semana: <%= @proposal.week_availability %>
+<br>
+Valor pedido por hora: <%= number_to_currency @proposal.claim_hour %>
+<br>
+Situação: <%= Proposal.human_enum_name(:status, @proposal.status)%>
+<br>
 
-<h3>Dados da proposta para <%= @proposal.project.title %>:</h3>
 
-  Mensagem: <%= @proposal.message %>
-  <br>
-  Previsão de término: <%= l @proposal.expected_end %>
-  <br>
-  Horas disponíveis por semana: <%= @proposal.week_availability %>
-  <br>
-  Valor pedido por hora: <%= number_to_currency @proposal.claim_hour %>
-  <br>
-  <br>
-
-
- 
   <% if @proposal.status == 'rejected' %>
-     <h3> Proposta recusada </h3>
+     Proposta recusada
      Justificativa: <%= @proposal.refused_justify %> 
   <%end%>
 
+  <% if (@proposal.status == 'pending') && freelancer_signed_in?%>
+  <%= link_to 'Excluir proposta', proposal_path(@proposal.id) , method: :delete %></a>  
+  <%end%>
 
-<h3> Reveja os dados do projeto: <h3>
-
+<br>
+<h3>Reveja os dados do projeto:</h3>
 Descrição: <%= @proposal.project.description %>
 <br>
 Remuneração máxima por hora: <%= number_to_currency(@proposal.project.value_hour)%>
@@ -41,8 +44,6 @@ Endereço: <%= @proposal.project.adress%>
  - <%= @proposal.project.city %>
  <br>
  <br>
-
-
 
 <%= link_to "Voltar", root_path%>
 

@@ -20,11 +20,13 @@ pt-BR:
 
   proposals:
     create:
-      success: 'Proposta enviada com sucesso'
+      success: 'Proposta enviada com sucesso!'
       unsuccess: 'Proposta não enviada - possui erros:'
     accept:
-      success: 'Proposta aceita com sucesso'
+      success: 'Proposta aceita com sucesso!'
       unsuccess: 'Proposta não aceita - possui erros:'
     reject:
       reject: 'Proposta recusada com sucesso'
+    destroy:
+      success: 'Proposta excluida com sucesso!'
 

@@ -6,11 +6,13 @@
    <%@proposals.each do |p|%>
    
     <%= link_to p.project.title, p %> -
-    <%= Proposal.human_enum_name(:status, p.status) %>
-    
-
-
+    <%= Proposal.human_enum_name(:status, p.status) %>  
 
     <br>
    <%end%> 
 <%end%>  
+
+ <br>
+ <br>
+
+<%= link_to "Voltar", root_path%>

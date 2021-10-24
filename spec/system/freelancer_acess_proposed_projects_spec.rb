@@ -121,7 +121,7 @@ describe 'frelancer acess submitted proposal projects' do
         click_on 'Meus Projetos' 
         click_on 'Vaga de cozinheiro no Sirigueijo Burguer'
 
-        expect(page).to have_content('Dados da proposta para Vaga de cozinheiro no Sirigueijo Burguer')
+        expect(page).to have_content('Projeto: Vaga de cozinheiro no Sirigueijo Burguer ')
         expect(page).to have_content('Mensagem: Não, contrata eu')
 
         expect(page).to have_content('Reveja os dados do projeto:')  

@@ -22,6 +22,15 @@ class ProposalsController < ApplicationController
         redirect_to @proposal, notice: t('.success') 
     end
 
+    def destroy
+        @proposal = Proposal.find(params[:id])    
+        @proposal.destroy!
+        redirect_to freelancer_proposals_path, notice: t('.success')  
+
+    end
+
+
+
     def reject_justify
         @proposal = Proposal.find(params[:project_id])
 
@@ -51,11 +60,7 @@ class ProposalsController < ApplicationController
             :week_availability,
             :expected_end,
             :claim_hour)
-    end
-
-    def proposal_param_reject
-        params.require(:proposal).permit(:reject_justify)
-    end
+    end   
 
 
 

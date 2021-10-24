@@ -32,17 +32,7 @@ describe 'frelancer acess submitted proposal projects' do
             area: piloto,
             remote: true)
 
-        
-        julio = Freelancer.create!(email: 'julio@max.com.br', password: '123456789')
-        profile_julio = LancerInfo.create!(name:'Julio César' , social:'Julinho', birth:'10/12/1005', 
-            adress: 'Rua das Pedras num XX' , city:'Roma' , formation: 'Filosofia e Arte da Guerra', 
-            description:'Otimo líder e extrategista', 
-            experiences: 'Fui general, Imperador e namorei a Cleopatra',
-            area: piloto, freelancer: julio )
-        proposal1 = Proposal.create!(message:'Contrata eu', week_availability: '70', 
-            expected_end:'01/01/2021',claim_hour: '20000', project: astronauta, freelancer: julio)
-        proposal2 = Proposal.create!(message:'Não, contrata eu', week_availability: '50', 
-                expected_end:'01/01/2021',claim_hour: '30', project: cozinheiro, freelancer: julio)
+
 
         bob = Freelancer.create!(email: 'bob@sponj.com.br', password: '123456789')
         profile_bob = LancerInfo.create!(name:'Bob esponja' , social:'Bob', birth:'10/10/2010', 
@@ -50,14 +40,24 @@ describe 'frelancer acess submitted proposal projects' do
             description:'Entusiasmado', 
             experiences: 'Moro num abacaxi',
             area: cozinha, freelancer: bob )
-        proposal3 = Proposal.create!(message:'Não, contrata eu', week_availability: '50', 
-                expected_end:'01/01/2021',claim_hour: '30', project: astronauta, freelancer: bob)
+        proposal1 = Proposal.create!(message:'Não, contrata eu', week_availability: '500', 
+                expected_end:'07/10/2021',claim_hour: '30', project: astronauta, freelancer: bob)
+        proposal2 = Proposal.create!(message:'Sei preparar hamburgueres', week_availability: '50', 
+                expected_end:'11/11/2021',claim_hour: '3', project: cozinheiro, freelancer: bob)
        
         
         login_as bob, scope: :freelancer       
         visit root_path
         click_on 'Meus Projetos' 
         click_on 'Vaga de astronauta na SpaceX'
+        click_on 'Excluir proposta'
+
+       
+        expect(page).to have_content('Proposta excluida com sucesso!')
+        expect(page).to_not have_content('Vaga de astronauta na SpaceX')
+
+
+
         
     end
 end
