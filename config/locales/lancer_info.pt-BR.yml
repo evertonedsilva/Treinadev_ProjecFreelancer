@@ -13,4 +13,9 @@ pt-BR:
         formation: Formação
         description: Descrição
         experiences: Experiências
-
+        
+  lancer_infos:
+    create:
+      success: 'Perfil criado com sucesso'
+      unsuccess: 'Perfil não criado - possui erros:'
+   

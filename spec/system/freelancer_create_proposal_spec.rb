@@ -35,7 +35,7 @@ describe 'create a proposal' do
         fill_in 'Pretensão salarial por hora', with: '50'
         click_on 'Enviar proposta'  
 
-        expect(page).to have_content('Cadidatura realizada com sucesso')
+        expect(page).to have_content('Proposta enviada com sucesso')
         expect(page).to have_content('Mensagem: Contrata eu')
         expect(page).to have_content('Previsão de término: 10/01/2022')
         expect(page).to have_content('Horas disponíveis por semana: 3')
@@ -72,8 +72,8 @@ describe 'create a proposal' do
             click_on 'Vaga de cozinheiro no Sirigueijo Burguer'
             click_on 'Enviar proposta'  
     
-            expect(page).to_not have_content('Cadidatura realizada com sucesso')
-            expect(page).to have_content('Candidatura não efetuada - possui erros')            
+            expect(page).to_not have_content('Proposta enviada com sucesso')
+            expect(page).to have_content('Proposta não enviada - possui erros')            
             expect(page).to have_content('Vaga de cozinheiro no Sirigueijo Burguer')
 
         end

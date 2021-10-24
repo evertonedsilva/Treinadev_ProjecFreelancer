@@ -19,7 +19,7 @@ class LancerInfosController < ApplicationController
         @profile.freelancer = current_freelancer    
         
         if @profile.save       
-            render :show           
+            render :show, notice: t('.success')           
         else
             render :new
         end

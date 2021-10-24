@@ -18,10 +18,11 @@ pt-BR:
 
   proposals:
     create:
-      success: 'Cadidatura realizada com sucesso'
-      unsuccess: 'Candidatura não efetuada - possui erros:'
+      success: 'Proposta enviada com sucesso'
+      unsuccess: 'Proposta não enviada - possui erros:'
     accept:
       success: 'Proposta aceita com sucesso'
       unsuccess: 'Proposta não aceita - possui erros:'
     reject:
       reject: 'Proposta recusada com sucesso'
+
