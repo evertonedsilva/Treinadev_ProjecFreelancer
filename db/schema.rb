@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_17_145657) do
+ActiveRecord::Schema.define(version: 2021_10_24_002806) do
 
   create_table "areas", force: :cascade do |t|
     t.string "name"
@@ -67,7 +67,6 @@ ActiveRecord::Schema.define(version: 2021_10_17_145657) do
     t.date "end_date"
     t.text "employer_feed"
     t.integer "squad_num"
-    t.boolean "type"
     t.string "adress"
     t.string "city"
     t.datetime "created_at", precision: 6, null: false
@@ -92,7 +91,7 @@ ActiveRecord::Schema.define(version: 2021_10_17_145657) do
     t.text "message"
     t.decimal "week_availability"
     t.date "expected_end"
-    t.decimal "claim_hour"
+    t.integer "claim_hour"
     t.index ["freelancer_id"], name: "index_proposals_on_freelancer_id"
     t.index ["project_id"], name: "index_proposals_on_project_id"
   end
