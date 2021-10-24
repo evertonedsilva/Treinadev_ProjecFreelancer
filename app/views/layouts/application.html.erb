@@ -10,16 +10,18 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+  <nav class="navbar navbar-expand-lg navbar-lg " style="background-color: #CE93D8; >
+
   <% if employer_signed_in? %>    
-    <span class="navbar-text mx-3"> Você esta logado como o contratador: </span>  
-    <a class="nav-link active"> <%= current_employer.email %></a>
-    <a class="nav-link active"> <%= link_to 'Logout', destroy_employer_session_path, method: :delete %></a>        
-          
+    <span class="navbar-text mx-3"> Você esta logado como o contratador:  
+    <a class="nav-link active"> <%= current_employer.email %></a></span> 
+    <button type="button" class="btn btn-warning">
+    <%= link_to 'Logout', destroy_employer_session_path, method: :delete %>       
+          </button>
   <% elsif freelancer_signed_in? %>  
     <span class="navbar-text mx-3"> Você esta logado como o freelancer </span>  
     <a class="nav-link active"> <%= current_freelancer.email %></a>
-    <a class="nav-link active"> <%= link_to 'Logout', destroy_freelancer_session_path, method: :delete %></a>   
+    <a class="nav-link active mx-3"> <%= link_to 'Logout', destroy_freelancer_session_path, method: :delete %></a>   
         
           
         
@@ -33,6 +35,7 @@
             <%= link_to 'Cadastre-se como contratador',  new_employer_registration_url %></a>
             </li>
           </ul>
+
           <ul>
             <li>
             <a class="nav-link mx-3"><%= link_to 'Entrar como freelancer', new_freelancer_session_path %></a>
@@ -40,9 +43,12 @@
             <li>
             <%= link_to 'Cadastre-se como freelancer',  new_freelancer_registration_url %></a>
             </li>
+           </ul>
       <% end %>   
       <br>   
-      <%= link_to "Voltar para pagina principal", root_path%>
+      <% if not current_page?(root_path)%>
+        <a class="nav-link active mx-3"><%= link_to "Voltar para pagina principal", root_path%>
+      <% end %>
   </nav>
 
   <body>
