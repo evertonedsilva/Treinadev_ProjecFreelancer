@@ -15,6 +15,6 @@ Rails.application.routes.draw do
       post 'reject', on: :member
       end  
   end
-  resources :proposals, only: [:show, :destroy]
+  resources :proposals, only: [:show, :destroy, :edit, :update]
 
 end

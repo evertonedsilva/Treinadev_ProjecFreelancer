@@ -29,4 +29,6 @@ pt-BR:
       reject: 'Proposta recusada com sucesso'
     destroy:
       success: 'Proposta excluida com sucesso!'
+    update:
+      success: 'Proposta alterada com êxito!'
 

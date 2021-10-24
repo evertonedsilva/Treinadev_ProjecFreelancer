@@ -1,3 +1,11 @@
+<% if @proposal.errors.any? %>
+  <ul>
+  <% @proposal.errors.full_messages.each do |e|%>
+   <li><%= e %>
+   <%end%>
+  </ul>
+<%end%>
+
 <h3>Dados da proposta: </h3>
 Projeto:  <%= @proposal.project.title %>
 <br>
@@ -19,9 +27,12 @@ Situação: <%= Proposal.human_enum_name(:status, @proposal.status)%>
   <%end%>
 
   <% if (@proposal.status == 'pending') && freelancer_signed_in?%>
-  <%= link_to 'Excluir proposta', proposal_path(@proposal.id) , method: :delete %></a>  
+  <%= link_to 'Excluir proposta', proposal_path(@proposal.id) , method: :delete, 
+  data: {confirm: "Tem certeza que quer excluir?"} %> <br>
+  <%= link_to 'Editar proposta', edit_proposal_path(@proposal.id) %> 
+ 
   <%end%>
-
+<br>
 <br>
 <h3>Reveja os dados do projeto:</h3>
 Descrição: <%= @proposal.project.description %>

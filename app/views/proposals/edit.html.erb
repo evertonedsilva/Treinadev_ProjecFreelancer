@@ -1,0 +1,43 @@
+<% if @proposal.errors.any? %>
+  <ul>
+  <% @proposal.errors.full_messages.each do |e|%>
+   <li><%= e %>
+   <%end%>
+  </ul>
+<%end%>
+
+
+<h3>Alterar proposta: </h3>
+<%=form_with model: @proposal  do |f| %> 
+<%= f.label :message, 'Mensagem' %>
+<%= f.text_field :message %> 
+<br>
+<%= f.label :week_availability, 'Horas disponíveis por semana' %>
+<%= f.number_field :week_availability %> 
+<br>
+<%= f.label :expected_end, 'Entrega prevista' %>
+<%= f.date_field :expected_end %> 
+<br>
+<%= f.label :claim_hour, 'Pretensão salarial por hora - R$' %>
+<%= f.number_field :claim_hour %>        
+<br>    
+<%= f.submit 'Alterar proposta' %>  
+<% end %> 
+<br>
+
+
+<h3>Dados da proposta atual: </h3>
+Projeto:  <%= @proposal.project.title %>
+<br>
+Mensagem: <%= @proposal.message %>
+  <br>
+Previsão de término: <%= l @proposal.expected_end %>
+  <br>
+Horas disponíveis por semana: <%= @proposal.week_availability %>
+<br>
+Valor pedido por hora: <%= number_to_currency @proposal.claim_hour %>
+<br>
+<br>
+
+
+<%= link_to "Voltar", root_path%>

@@ -43,16 +43,6 @@ class LancerInfosController < ApplicationController
 
 
 
-
-
-
-
-
-
-
-
-
-
     private            
 
     def profile_params
