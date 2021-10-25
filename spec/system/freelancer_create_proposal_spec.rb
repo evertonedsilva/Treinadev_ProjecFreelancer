@@ -75,6 +75,7 @@ describe 'create a proposal' do
             expect(page).to_not have_content('Proposta enviada com sucesso')
             expect(page).to have_content('Proposta não enviada - possui erros')            
             expect(page).to have_content('Vaga de cozinheiro no Sirigueijo Burguer')
+           
 
         end
    

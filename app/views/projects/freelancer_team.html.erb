@@ -1,0 +1,15 @@
+ 
+<h3>Veja os componetes de sua equipe: </h3>
+
+
+ <% @proposals.each do |prop| %> 
+        <% freelancer= Freelancer.find(prop.freelancer_id) %> 
+        <% lancer_info = LancerInfo.find(freelancer.id)%> 
+        <%= link_to "#{lancer_info.name}- - -#{freelancer.email}" , lancer_info %>   
+          
+          
+       <br> 
+       <br>   
+
+<%end %>
+

@@ -1,3 +1,8 @@
+require 'rails_helper'
+
+describe 'freelancer acess team' do
+
+    it  'sucessufully' do
         cozinha = Area.create!(name: 'Cozinha')  
 
         piloto = Area.create!(name: 'Piloto') 
@@ -36,9 +41,9 @@
         proposalB = Proposal.create!(message:'Eu quero tentar', week_availability: '50', 
                     expected_end:'01/01/2021',claim_hour: '30', project: cozinheiro, freelancer: bob)
 
-        chewbaca = Freelancer.create!(email: 'chew@yfrr.com.br', password: '123456789')
+        chewbaca = Freelancer.create!(email: 'chewe@yfrr.com.br', password: '123456789')
         profile_chew = LancerInfo.create!(name:'Chewbaca' , social:'Chewie', birth:'02/06/4756', 
-                adress: 'Feira do Bikini' , city:'Atlantida' , formation: 'Sim', 
+                adress: 'Kashyyyk' , city:'OY' , formation: 'Militar', 
                 description:'Ser intergalático', 
                 experiences: 'Guerreiro e copiloto',
                 area: piloto, freelancer: chewbaca )
@@ -46,6 +51,24 @@
                 expected_end:'01/06/4780', claim_hour: '30000', project: cozinheiro, freelancer: chewbaca)
         
         
-        proposalJ.accepted!
+        proposalJ.rejected!
         proposalB.accepted!
+        proposalC.accepted!
         
+
+
+        login_as bob, scope: :freelancer     
+        visit root_path
+        click_on 'Meus Projetos'
+        click_on 'Vaga de cozinheiro no Sirigueijo Burguer'
+        click_on 'Ver equipe'
+
+        
+        expect(page).to have_content('Chewbaca')
+        expect(page).to have_content('chewe@yfrr.com.br')
+        expect(page).to_not have_content('Julio César')
+        expect(page).to_not have_content('julio@max.com.br')
+
+    end 
+    
+end

@@ -33,6 +33,15 @@ class ProjectsController < ApplicationController
         @projects = current_employer.projects
     end
 
+    def freelancer_team     
+        @proposal = Proposal.find(params[:format])
+        @project_id =  @proposal.project_id
+        @proposals = Proposal.where(project_id:@project_id, status:'accepted') 
+       
+
+    end
+
+
     private            
 
     def data_params

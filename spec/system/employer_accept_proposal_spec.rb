@@ -7,7 +7,7 @@ describe 'employer acess proposal' do
 
         sirigueijo = Employer.create!(email: 'siri@burguer.br', password: '123456789')
                      
-        cozinheiro = Project.create!(title:'Cozinheiro', employer:sirigueijo, 
+        cozinheiro = Project.create!(employer:sirigueijo, 
             title: 'Vaga de cozinheiro no Sirigueijo Burguer',  
             description:'Procuro alguém para preparo de hamburgueres de Siri', 
             value_hour:'500',

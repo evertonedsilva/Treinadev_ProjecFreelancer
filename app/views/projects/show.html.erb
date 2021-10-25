@@ -22,6 +22,8 @@ Remoto: <%= @project.remote ?  'Sim' : 'Não' %>
 Endereço: <%= @project.adress%>
  - <%= @project.city %>
  <br>
+ Situação: <%= Project.human_enum_name(:status, @project.status)%>
+<br>
  <br>
  <br>
 
@@ -61,6 +63,8 @@ Endereço: <%= @project.adress%>
              
     
 <% elsif freelancer_signed_in?%>
+    
+
     <% emails=[]%>     
     <% @project.proposal.each do |p| %> 
         <% emails<<p.freelancer.email %>    
@@ -71,10 +75,14 @@ Endereço: <%= @project.adress%>
     <% if (emails.include?(current_freelancer.email))%> 
         <br>
         <br>
-        Você já enviou uma proposta para esse projeto!
-
+        Você já enviou uma proposta para esse projeto!       
+        
+           
      <% elsif (@project.status=='open')%> 
+        
 
+
+        Faça uma proposta para esse projeto!:
         <%=form_with model: @proposal,url: project_proposals_path(@project.id) do |f| %> 
         <%= f.label :message, 'Mensagem' %>
         <%= f.text_field :message %> 

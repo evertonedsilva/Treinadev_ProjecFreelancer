@@ -16,4 +16,10 @@ pt-BR:
         remote: Remoto
         adress: Endereço
         city: Cidade
-        employer_feed: Avaliação final   
+        employer_feed: Avaliação final  
+        statuses:
+          open: Aberto
+          full: Cheio
+          running: Em progresso
+          closed: Fechada
+

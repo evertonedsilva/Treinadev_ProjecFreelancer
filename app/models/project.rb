@@ -4,7 +4,7 @@ class Project < ApplicationRecord
     has_many :proposal, dependent: :nullify
 
     
-    enum status: {open: 5, running: 10, closed: 30}
+    enum status: {open: 5, full: 10, running: 20, closed: 30}
 
     validates :title,  
     :description, 

@@ -1,12 +1,3 @@
-<% if @proposal.errors.any? %>
-  <ul>
-  <% @proposal.errors.full_messages.each do |e|%>
-   <li><%= e %>
-   <%end%>
-  </ul>
-<%end%>
-
-
 <h3>Alterar proposta: </h3>
 <%=form_with model: @proposal  do |f| %> 
 <%= f.label :message, 'Mensagem' %>

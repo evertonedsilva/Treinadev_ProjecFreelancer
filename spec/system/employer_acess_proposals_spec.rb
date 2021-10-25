@@ -4,7 +4,7 @@ describe 'employer acess proposal' do
     it  'sucessufully' do
         sirigueijo = Employer.create!(email: 'siri@burguer.br', password: '123456789')
         cozinha = Area.create!(name: 'Cozinha')                
-        cozinheiro = Project.create!(title:'Cozinheiro', employer:sirigueijo, 
+        cozinheiro = Project.create!( employer:sirigueijo, 
             title: 'Vaga de cozinheiro no Sirigueijo Burguer',  
             description:'Procuro alguém para preparo de hamburgueres de Siri', 
             value_hour:'500',
