@@ -56,7 +56,6 @@ describe 'create a project' do
         expect(page).to have_content("Endereço não pode ficar em branco")
         expect(page).to have_content("Cidade não pode ficar em branco")
         expect(page).to have_content("Area não pode ficar em branco")
-        expect(page).to have_content("Remoto não pode ficar em branco")
                
 
     end

@@ -20,7 +20,7 @@
     
     <div> 
     <%= f.label :value_hour %>
-    <%= f.text_field :value_hour %>
+    <%= f.number_field :value_hour, min: 0 %>
     </div>
 
     <div> 
@@ -40,7 +40,7 @@
    
     <div> 
     <%= f.label :squad_num %>
-    <%= f.number_field :squad_num %>
+    <%= f.number_field :squad_num, step: 1, min: 1 %>
     </div>
 
     <div>
