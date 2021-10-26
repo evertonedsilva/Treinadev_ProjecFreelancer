@@ -31,7 +31,14 @@ class ProjectsController < ApplicationController
 
     def employer_profile                    
         @projects = current_employer.projects
+        @open_projects = Project.where(employer_id:current_employer.id, status:'open') 
+        @full_projects = Project.where(employer_id:current_employer.id, status:'full') 
+        @running_projects = Project.where(employer_id:current_employer.id, status:'running') 
+        @closed_projects = Project.where(employer_id:current_employer.id, status:'closed') 
+
     end
+
+
 
     def freelancer_team     
         @proposal = Proposal.find(params[:format])
