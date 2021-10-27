@@ -59,8 +59,7 @@ describe 'employer change project status' do
                 expect(page).to have_content('Projeto encerrado com sucesso!')
                 expect(page).to_not have_content('Vaga de cozinheiro no Sirigueijo Burguer')
                 
-                
-    
+
             end
     end
         

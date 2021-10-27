@@ -8,9 +8,9 @@
             title: 'Vaga de cozinheiro no Sirigueijo Burguer',  
             description:'Procuro alguém para preparo de hamburgueres de Siri', 
             value_hour:'500',
-            limit_proposal:'10/11/2021',
-            start_date:'10/12/2021' ,
-            end_date:'10/01/2022' ,
+            limit_proposal:10.days.from_now,
+            start_date:1.month.from_now ,
+            end_date:3.month.from_now  ,
             squad_num: 1,
             adress: 'Fenda do Bikini' ,
             city: 'Atlantida' ,            
@@ -46,6 +46,5 @@
                 expected_end:'01/06/4780', claim_hour: '30000', project: cozinheiro, freelancer: chewbaca)
         
         
-        proposalJ.accepted!
         proposalB.accepted!
         
