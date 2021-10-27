@@ -9,6 +9,8 @@ class Proposal < ApplicationRecord
     :expected_end,
     :claim_hour, 
      presence: true
+
+    
     
 
 end

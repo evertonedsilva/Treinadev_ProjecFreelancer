@@ -1,5 +1,9 @@
 class ProjectsController < ApplicationController    
-    before_action :authenticate_employer!, only: [:new, :create]
+    before_action :authenticate_employer!, only: [:new, :create, :employer_profile,
+        :running, :closed]
+    before_action :authenticate_freelancer!, only: [:avaiable, :freelancer_team ]
+    
+    
     def show        
         @project = Project.find(params[:id])
         @proposal= Proposal.new

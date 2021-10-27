@@ -1,5 +1,14 @@
 class ProposalsController < ApplicationController
-    before_action :authenticate_freelancer!, only: [:new, :create, :update, :destroy]
+    before_action :authenticate_freelancer!, only: [:new, :create, :edit, :update, :cancel]
+    before_action :authenticate_employer!, only: [ :accept, :reject_justify, :reject]
+    before_action :authenticate_user!, only: [ :show ]
+
+    def authenticate_user!
+        redirect_to root_path, alert: "Acesso apenas para usuarios logados" unless freelancer_signed_in? || employer_signed_in?
+    end
+  
+
+
     def show
         @proposal = Proposal.find(params[:id])
     end

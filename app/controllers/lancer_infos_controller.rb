@@ -1,5 +1,5 @@
 class LancerInfosController < ApplicationController
-    before_action :authenticate_freelancer!, only: [:new, :create, :update]
+    before_action :authenticate_freelancer!, only: [:index, :show, :new, :create, :edit, :update]
 
     def index        
         @profile = LancerInfo.find(current_freelancer.id)
@@ -41,8 +41,7 @@ class LancerInfosController < ApplicationController
         end
     end
 
-
-
+    
     private            
 
     def profile_params
