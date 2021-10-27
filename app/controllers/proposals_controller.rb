@@ -5,7 +5,7 @@ class ProposalsController < ApplicationController
     end
 
     def create
-        @proposal = current_freelancer.proposal.new(proposal_params)
+        @proposal = current_freelancer.proposals.new(proposal_params)
         @proposal.project = Project.find(params[:project_id])
 
         if @proposal.save    

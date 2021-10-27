@@ -37,14 +37,14 @@ Endereço: <%= @project.adress%>
     
      <br>
      <br>
-    <% if @project.proposal.any?%>
+    <% if @project.proposals.any?%>
      <h3>  Propostas para o projeto: </h3>
      <%else%>
         <h3> Você ainda não possui propostas para esse projeto </h3>
     <%end%>
 
 
-    <% @project.proposal.each do |proposal| %>
+    <% @project.proposals.each do |proposal| %>
         <% if (proposal.status=='accepted') %>
            <h4> Proposta aceita:</h4>
             Proposta de <%= link_to proposal.freelancer.email,lancer_info_path(proposal.freelancer_id)  %>  <br>         
@@ -77,7 +77,7 @@ Endereço: <%= @project.adress%>
     
 
     <% emails=[]%>     
-    <% @project.proposal.each do |p| %> 
+    <% @project.proposals.each do |p| %> 
         <% emails<<p.freelancer.email %>    
         <% end %> 
     
