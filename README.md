@@ -3,9 +3,9 @@ Ele compõe a etapa de projetos do Treinadev-7, oferecido pela Campus Code.<br>
 O código empregado foi o Ruby 2.7.0. <br>
     No desenvolvimento do back-end foram utilizadas as Gems do Ruby on Rails,<br>
 descritas no arquivo Gemfile. Para instalar as dependências basta rodar:
-> bundle install
+> bundle install<br>
 Para o front-end foi utilizado o bootstrap. Para instala-lo, basta fazer:
-> yarn add bootstrap
+> yarn add bootstrap<br>
 
 
     A plataforma, chamada easylancer, possui o acesso de dois tipos de usuário:
@@ -27,12 +27,19 @@ do perfil dos freelancers e compor um projeto.
 
 --------------------Dados exemplos cadastrados ---------------------------------------
     O plataforma possui alguns dados de usuários e projetos exemplos, descritos <br>
-no arquivo db/seed. Nesse arquivo estão inseridos:
-Dados exemplos de áreas profissionais:
--Cozinha
--Piloto
+no arquivo db/seed. Para aplicar esse banco de dados exemplo basta usar o comando:<br>
+> rails db:seed <br>
 
-Dados exemplo de contratador:
+    Nesse arquivo estão inseridos:
+Dados exemplos de áreas profissionais:
+- Cozinha
+- Piloto
+- Desenvolvedor
+- Designer
+- UX
+- Administrador de banco de dados
+
+    Dados exemplo de contratador:
 - Sirigueijo: siri@burguer.br / senha 123456789
 Esse usuário possui um projeto, com título Vaga de cozinheiro no Sirigueijo Burguer.
 
@@ -42,8 +49,8 @@ Dados exemplos de freelancers:
 - Julio César: julio@max.com.br / senha 123456789
 - Chewbaca: chew@yfrr.com.br / senha 123456789
 
-Esses três freelancers apresentaram propostas para o projeto do Sirigueijo
-mas apenas a proposta de Bob esponja foi aceita.
+Esses três freelancers apresentaram propostas para o projeto do Sirigueijo,mas apenas <br>
+a proposta de Bob esponja foi aceita.
 
 
 

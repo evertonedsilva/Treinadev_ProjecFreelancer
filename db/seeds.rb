@@ -1,6 +1,15 @@
         cozinha = Area.create!(name: 'Cozinha')  
 
         piloto = Area.create!(name: 'Piloto') 
+
+        Desenvolvedor = Area.create!(name: 'Desenvolvedor') 
+
+        Designer = Area.create!(name: 'Designer') 
+
+        UX = Area.create!(name: 'UX') 
+
+        Admin_DB = Area.create!(name: 'Administrador de banco de dados') 
+
    
         sirigueijo = Employer.create!(email: 'siri@burguer.br', password: '123456789')
                  
