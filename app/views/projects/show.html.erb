@@ -1,4 +1,4 @@
-<h3> Dados do projeto <h3>
+<h3> Dados do projeto </h3>
 
 
 Título: <%= @project.title%>
@@ -22,19 +22,31 @@ Remoto: <%= @project.remote ?  'Sim' : 'Não' %>
 Endereço: <%= @project.adress%>
  - <%= @project.city %>
  <br>
- Situação: <%= Project.human_enum_name(:status, @project.status)%>
-<br>
  <br>
- <br>
-
+ <h3> Situação do projeto: <%= Project.human_enum_name(:status, @project.status)%> </h3>
 
 <% if employer_signed_in? && @project.employer==current_employer%>
 
-    <% @project.proposal.each do |proposal| %>
+    <% if @project.status == 'open' ||  @project.status == 'full'%>
+        <%= link_to 'Iniciar projeto', running_projects_path(@project.id), method: :post, 
+        data: {confirm: "Tem certeza que quer iniciar o projeto?"} %>
+    <% elsif @project.status == 'running'%>
+        <%= link_to 'Encerrar projeto', closed_projects_path(@project.id), method: :post, 
+        data: {confirm: "Tem certeza que quer encerrar o projeto?"} %>
+    <% end %>
+    
+     <br>
+     <br>
+    <% if @project.proposal.any?%>
+     <h3>  Propostas para o projeto: </h3>
+     <%else%>
+        <h3> Você ainda não possui propostas para esse projeto </h3>
+    <%end%>
 
+
+    <% @project.proposal.each do |proposal| %>
         <% if (proposal.status=='accepted') %>
-            Proposta aceita:
-            <br>
+           <h4> Proposta aceita:</h4>
             Proposta de <%= link_to proposal.freelancer.email,lancer_info_path(proposal.freelancer_id)  %>  <br>         
             Mensagem: <%= proposal.message %>            <br>
             Previsão de término: <%= l proposal.expected_end %>            <br>
@@ -42,8 +54,7 @@ Endereço: <%= @project.adress%>
             Valor pedido por hora: <%= number_to_currency proposal.claim_hour %>            <br><br>
         
         <% elsif (proposal.status=='pending') %>
-            Proposta pendente:
-            <br>
+            <h4> Proposta pendente:</h4>
             Proposta de <%= link_to proposal.freelancer.email,lancer_info_path(proposal.freelancer_id)  %>  <br>         
             Mensagem: <%= proposal.message %>            <br>
             Previsão de término: <%= l proposal.expected_end %>            <br>

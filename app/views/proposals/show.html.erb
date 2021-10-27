@@ -29,7 +29,9 @@ Situação: <%= Proposal.human_enum_name(:status, @proposal.status)%>
   <% if (@proposal.status == 'pending') && freelancer_signed_in?%>
   <%= link_to 'Excluir proposta', proposal_path(@proposal.id) , method: :delete, 
   data: {confirm: "Tem certeza que quer excluir?"} %> <br>
+  
   <%= link_to 'Editar proposta', edit_proposal_path(@proposal.id) %> 
+  
   <% elsif  (@proposal.status == 'accepted') && freelancer_signed_in? %>
   <%= link_to 'Ver equipe',  freelancer_team_projects_path(@proposal.id) %> 
   

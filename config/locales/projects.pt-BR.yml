@@ -23,3 +23,11 @@ pt-BR:
           running: Em progresso
           closed: Fechada
 
+  projects:
+    running:
+      success: 'Projeto iniciado com sucesso!'
+    closed:
+      success: 'Projeto encerrado com sucesso!'
+
+      
+

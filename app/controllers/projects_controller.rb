@@ -8,7 +8,7 @@ class ProjectsController < ApplicationController
 
     def new
         @project = Project.new  
-
+ 
     end
 
     def create
@@ -30,12 +30,27 @@ class ProjectsController < ApplicationController
     end
 
     def employer_profile                    
-        @projects = current_employer.projects
         @open_projects = Project.where(employer_id:current_employer.id, status:'open') 
         @full_projects = Project.where(employer_id:current_employer.id, status:'full') 
         @running_projects = Project.where(employer_id:current_employer.id, status:'running') 
-        @closed_projects = Project.where(employer_id:current_employer.id, status:'closed') 
+        @projects= @open_projects +  @full_projects + @running_projects 
+         
 
+    end
+
+    def running
+        @project = Project.find(params[:format])
+        @project.running!
+        @project.save
+        redirect_to @project, notice: t('.success')  
+
+    end
+
+    def closed
+        @project = Project.find(params[:format])
+        @project.closed!
+        @project.save   
+        redirect_to employer_profile_projects_path, notice: t('.success')     
     end
 
 
@@ -43,9 +58,7 @@ class ProjectsController < ApplicationController
     def freelancer_team     
         @proposal = Proposal.find(params[:format])
         @project_id =  @proposal.project_id
-        @proposals = Proposal.where(project_id:@project_id, status:'accepted') 
-       
-
+        @proposals = Proposal.where(project_id:@project_id, status:'accepted')
     end
 
 

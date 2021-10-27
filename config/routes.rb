@@ -10,11 +10,14 @@ Rails.application.routes.draw do
     get 'employer_profile', on: :collection 
     get 'avaiable', on: :collection
     get 'freelancer_team', on: :collection
+    post 'running', on: :collection
+    post 'closed', on: :collection
+
     resources :proposals, only: [ :index, :show, :new, :create] do     
       post 'accept', on: :member
       get 'reject_justify', on: :member
       post 'reject', on: :member
-      end  
+      end   
   end
   resources :proposals, only: [:show, :destroy, :edit, :update]
 

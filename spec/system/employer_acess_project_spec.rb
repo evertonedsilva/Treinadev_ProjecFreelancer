@@ -19,7 +19,7 @@ describe 'sucessfully' do
         click_on 'Meus projetos'
 
 
-        expect(page).to have_content('Você ainda não possui projetos')
+        expect(page).to have_content('Você ainda possui projetos')
 
     end
 
