@@ -27,7 +27,7 @@ Situação: <%= Proposal.human_enum_name(:status, @proposal.status)%>
   <%end%>
 
   <% if (@proposal.status == 'pending') && freelancer_signed_in?%>
-  <%= link_to 'Excluir proposta', proposal_path(@proposal.id) , method: :delete, 
+  <%= link_to 'Cancelar proposta', cancel_project_proposal_path(@proposal.id) , method: :post, 
   data: {confirm: "Tem certeza que quer excluir?"} %> <br>
   
   <%= link_to 'Editar proposta', edit_proposal_path(@proposal.id) %> 

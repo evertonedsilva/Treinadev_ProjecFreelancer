@@ -27,7 +27,7 @@ pt-BR:
       unsuccess: 'Proposta não aceita - possui erros:'
     reject:
       reject: 'Proposta recusada com sucesso'
-    destroy:
+    cancel:
       success: 'Proposta excluida com sucesso!'
     update:
       success: 'Proposta alterada com êxito!'

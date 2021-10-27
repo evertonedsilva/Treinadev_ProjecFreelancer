@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       post 'accept', on: :member
       get 'reject_justify', on: :member
       post 'reject', on: :member
+      post 'cancel', on: :member
       end   
   end
   resources :proposals, only: [:show, :destroy, :edit, :update]

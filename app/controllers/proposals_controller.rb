@@ -32,10 +32,13 @@ class ProposalsController < ApplicationController
         end
     end
 
-    def destroy
+    def cancel
         @proposal = Proposal.find(params[:id])    
-        @proposal.destroy!
-        redirect_to freelancer_proposals_path, notice: t('.success')  
+        @proposal.canceled! 
+        @proposal.save
+        redirect_to freelancer_proposals_path, notice: t('.success') 
+        # não exclui do banco, só oculta do usuario 
+
     end
 
 
@@ -54,6 +57,7 @@ class ProposalsController < ApplicationController
     def reject
         @proposal = Proposal.find(params[:project_id])
         @proposal.refused_justify=  params[:refused_justify]
+        @proposal.rejected!
         @proposal.save
 
         if (@proposal.refused_justify == nil) or (@proposal.refused_justify == '')
@@ -61,7 +65,7 @@ class ProposalsController < ApplicationController
             notice: 'Justificativa não pode ficar em branco!'
         else
 
-            @proposal.rejected!
+            #@proposal.rejected!
             redirect_to @proposal,
             notice: 'Justificativa registrada com sucesso!'
         end
