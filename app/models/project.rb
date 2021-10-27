@@ -1,7 +1,7 @@
 class Project < ApplicationRecord
     belongs_to :employer
     belongs_to :area
-    has_many :proposal, dependent: :nullify
+    has_many :proposals, dependent: :nullify
 
     
     enum status: {open: 5, full: 10, running: 20, closed: 30}
