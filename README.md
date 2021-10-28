@@ -12,7 +12,7 @@ yarn add bootstrap
 ```
 
 <br>
-    A plataforma, chamada easylancer, possui o acesso de dois tipos de usuário:
+    A plataforma, chamada easylancer, possui o acesso de dois tipos de usuário:<br>
 - Contratador (employer)
 - Freelancer (freelancer)
 
@@ -57,6 +57,7 @@ Dados exemplos de freelancers:<br>
 
 Esses três freelancers apresentaram propostas para o projeto do Sirigueijo,mas apenas <br>
 a proposta de Bob esponja foi aceita.
+
 
 
 

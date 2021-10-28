@@ -1,5 +1,5 @@
 <h3> Meus Projetos: <h3>
-
+<%=current_freelancer.blank?%>
 
 <%if @projects.empty? %> 
    <h4> Você ainda possui projetos</h4>
@@ -28,6 +28,8 @@
    <br>
    <%end%>
 <%end%>  
+
+
 
 
 

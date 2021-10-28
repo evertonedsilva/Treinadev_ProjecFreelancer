@@ -2,11 +2,39 @@ class ProposalsController < ApplicationController
     before_action :authenticate_freelancer!, only: [:new, :create, :edit, :update, :cancel]
     before_action :authenticate_employer!, only: [ :accept, :reject_justify, :reject]
     before_action :authenticate_user!, only: [ :show ]
+    # just the proposal owner can edit proposal
+    before_action :autenticate_proposal_edition!, only: [ :edit, :update, :cancel]
+    # only the employer from the proposal can change proposal status
+    before_action :autenticate_proposal_acept_reject!, only: [ :accept, :reject_justify, :reject]
+    # proposal cound't be canceled by freelancer 3 days before proposal_creation
+    before_action :autenticate_proposal_cancel!, only: [:cancel]
+
+
 
     def authenticate_user!
-        redirect_to root_path, alert: "Acesso apenas para usuarios logados" unless freelancer_signed_in? || employer_signed_in?
+        redirect_to root_path, alert: "Acesso apenas para usuarios logados" unless 
+        freelancer_signed_in? || employer_signed_in?
     end
+
+    def autenticate_proposal_acept_reject!
+        project_id = Proposal.find(params[:id]).project_id
+        employer_id = Project.find(project_id).employer_id
+        redirect_to root_path, alert: "Apenas o dono do projeto pode aceitar ou rejeitar a proposta" unless 
+        current_employer.id ==  employer_id
+    end
+
   
+    def autenticate_proposal_edition!
+        proposal = Proposal.find(params[:id])
+        redirect_to root_path, alert: "Apenas o dono da proposta pode editá-la" unless 
+        current_freelancer.id==proposal.freelancer_id
+    end
+
+    def autenticate_proposal_cancel!
+        proposal = Proposal.find(params[:id])
+        redirect_to root_path, alert: "A proposta só pode ser cancelada 3 dias de ser submetida" unless 
+        proposal.submit_date > 3.day.ago        
+    end
 
 
     def show
