@@ -37,7 +37,7 @@ rails db:seed
 ```
 <br>
     Nesse arquivo estão inseridos:
-Dados exemplos de áreas profissionais:
+Dados exemplos de áreas profissionais:<br>
 - Cozinha
 - Piloto
 - Desenvolvedor
@@ -45,12 +45,12 @@ Dados exemplos de áreas profissionais:
 - UX
 - Administrador de banco de dados
 
-    Dados exemplo de contratador:
+    Dados exemplo de contratador:<br>
 - Sirigueijo: siri@burguer.br / senha 123456789
-Esse usuário possui um projeto, com título Vaga de cozinheiro no Sirigueijo Burguer.
+Esse usuário possui um projeto, com título Vaga de cozinheiro no Sirigueijo Burguer.<br>
 
 
-Dados exemplos de freelancers:
+Dados exemplos de freelancers:<br>
 - Bob esponja: bob@sponj.com.br / senha 123456789
 - Julio César: julio@max.com.br / senha 123456789
 - Chewbaca: chew@yfrr.com.br / senha 123456789
