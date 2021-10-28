@@ -11,7 +11,7 @@ Para o front-end foi utilizado o bootstrap. Para instala-lo, basta fazer:
 yarn add bootstrap
 ```
 
-
+<br>
     A plataforma, chamada easylancer, possui o acesso de dois tipos de usuário:
 - Contratador (employer)
 - Freelancer (freelancer)
@@ -35,7 +35,7 @@ no arquivo db/seed. Para aplicar esse banco de dados exemplo basta usar o comand
 ```
 rails db:seed
 ```
-
+<br>
     Nesse arquivo estão inseridos:
 Dados exemplos de áreas profissionais:
 - Cozinha
