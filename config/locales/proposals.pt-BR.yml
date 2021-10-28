@@ -10,7 +10,8 @@ pt-BR:
         week_availability: Horas disponíveis por semana
         expected_end: Fim experado proposto
         claim_hour: Pretensão salarial por hora
-        refused_justify: Justificativa para recusar        
+        refused_justify: Justificativa para recusar 
+        submit_date: Data de submissão       
         statuses:
           pending: Pendente
           accepted: Aceita

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_24_135545) do
+ActiveRecord::Schema.define(version: 2021_10_28_004718) do
 
   create_table "areas", force: :cascade do |t|
     t.string "name"
@@ -92,6 +92,7 @@ ActiveRecord::Schema.define(version: 2021_10_24_135545) do
     t.date "expected_end"
     t.integer "claim_hour"
     t.integer "week_availability"
+    t.date "submit_date"
     t.index ["freelancer_id"], name: "index_proposals_on_freelancer_id"
     t.index ["project_id"], name: "index_proposals_on_project_id"
   end

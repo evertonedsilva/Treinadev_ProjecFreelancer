@@ -25,10 +25,6 @@ class Project < ApplicationRecord
     validate :end_date_after_start_date
     validate :proposal_past
 
-
-
-      
-    #self.total_value = (end_date - start_date).to_i * property.daily_rate
   
     private
     def minimum_team
