@@ -4,11 +4,11 @@ O código empregado foi o Ruby 2.7.0. <br>
     No desenvolvimento do back-end foram utilizadas as Gems do Ruby on Rails,<br>
 descritas no arquivo Gemfile. Para instalar as dependências basta rodar:
 ```
-bundle install<br>
+bundle install
 ```
 Para o front-end foi utilizado o bootstrap. Para instala-lo, basta fazer:
 ```
-yarn add bootstrap<br>
+yarn add bootstrap
 ```
 
 
@@ -33,7 +33,7 @@ do perfil dos freelancers e compor um projeto.
     O plataforma possui alguns dados de usuários e projetos exemplos, descritos <br>
 no arquivo db/seed. Para aplicar esse banco de dados exemplo basta usar o comando:<br>
 ```
-rails db:seed <br>
+rails db:seed
 ```
 
     Nesse arquivo estão inseridos:
