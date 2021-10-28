@@ -74,7 +74,7 @@ class ProposalsController < ApplicationController
             notice: 'Justificativa não pode ficar em branco!'
         else
 
-            #@proposal.rejected!
+            @proposal.rejected!
             redirect_to @proposal,
             notice: 'Justificativa registrada com sucesso!'
         end

@@ -12,8 +12,23 @@ class Proposal < ApplicationRecord
     :claim_hour, 
      presence: true
 
-  
- 
-    
+     before_save :insert_submit_day
+     validate :project_expired
+     
 
+     private
+ 
+ 
+     def insert_submit_day
+         self.submit_date = Date.today
+     end
+ 
+ 
+     
+    def project_expired
+        if Date.today>project.limit_proposal
+            errors.add(:submit_date, 'esta fora do prazo estipulado')
+        end
+     
+    end 
 end
