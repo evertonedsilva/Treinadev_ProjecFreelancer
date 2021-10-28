@@ -7,7 +7,12 @@ class ProposalsController < ApplicationController
     # only the employer from the proposal can change proposal status
     before_action :autenticate_proposal_acept_reject!, only: [ :accept, :reject_justify, :reject]
     # proposal cound't be canceled by freelancer 3 days before proposal_creation
-    before_action :autenticate_proposal_cancel!, only: [:cancel]
+    before_action :expired_proposal_cancel!, only: [:cancel]
+    # proposal could't be create out of limit_proposal
+    before_action :expired_proposal_deadline!, only: [:create]
+    # one freelancer could't submit more than one proposal for the same project
+    before_action :duplicate_proposal!, only: [:create]
+    
 
 
 
@@ -30,11 +35,27 @@ class ProposalsController < ApplicationController
         current_freelancer.id==proposal.freelancer_id
     end
 
-    def autenticate_proposal_cancel!
+    def expired_proposal_cancel!
         proposal = Proposal.find(params[:id])
         redirect_to root_path, alert: "A proposta só pode ser cancelada 3 dias de ser submetida" unless 
         proposal.submit_date > 3.day.ago        
     end
+
+    def expired_proposal_deadline!
+        project = Project.find(params[:project_id])        
+        redirect_to root_path, alert: "A proposta só pode ser cancelada 3 dias após ser submetida" unless 
+        project.limit_proposal > Time.now     
+    end
+
+    def duplicate_proposal!
+        project = Project.find(params[:project_id])
+        proposals = Proposal.where.not(project:project) 
+        active_proposals = proposals.where.not(status:'canceled')         
+        proposal_freelancer_ids = active_proposals.pluck(:freelancer_id)        
+        redirect_to root_path, alert: "A proposta só pode ser cancelada 3 dias após ser submetida" unless 
+        proposal_freelancer_ids.exclude?(current_freelancer.id)    
+    end
+
 
 
     def show
