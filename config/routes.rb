@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     post 'running', on: :collection
     post 'closed', on: :collection
 
-    resources :proposals, only: [ :index, :show, :new, :create] do     
+    resources :proposals, only: [ :index, :show, :create] do     
       post 'accept', on: :member
       get 'reject_justify', on: :member
       post 'reject', on: :member

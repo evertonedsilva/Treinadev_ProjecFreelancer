@@ -85,7 +85,7 @@ describe 'freelance create a proposal' do
                 title: 'Vaga de cozinheiro no Sirigueijo Burguer',  
                 description:'Procuro alguém para preparo de hamburgueres de Siri', 
                 value_hour:'500',
-                limit_proposal: 1.day.ago,
+                limit_proposal: 1.day.from_now,
                 start_date:'10/12/2021' ,
                 end_date:'10/01/2022' ,
                 squad_num: 1,
@@ -103,7 +103,7 @@ describe 'freelance create a proposal' do
                     area: especialidade, freelancer: bobesponja )
 
                
-
+                Timecop.travel(Time.now + 4.days)
                 login_as bobesponja, scope: :freelancer       
                 visit root_path
                 click_on 'Projetos disponíveis'
@@ -117,7 +117,7 @@ describe 'freelance create a proposal' do
                 
         
                 expect(page).to have_content("A proposta não pode ser submetida fora do prazo")
-                
+                Timecop.travel(Time.now - 4.days)
                
             end
 

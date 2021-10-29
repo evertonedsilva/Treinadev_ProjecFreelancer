@@ -10,7 +10,7 @@ class ProposalsController < ApplicationController
     
     before_action :duplicate_proposal!, only: [:create]
     
-    before_action :authenticate_freelancer!, only: [:new, :create, :edit, :update, :cancel]
+    before_action :authenticate_freelancer!, only: [ :create, :edit, :update, :cancel]
     before_action :authenticate_employer!, only: [ :accept, :reject_justify, :reject]
     before_action :authenticate_user!, only: [ :show ]
 
@@ -54,20 +54,21 @@ class ProposalsController < ApplicationController
         project.limit_proposal > Time.now     
     end
 
-    def duplicate_proposal!
-        project = Project.find(params[:project_id])
-        proposals = Proposal.where.not(project:project) 
-        active_proposals = proposals.where.not(status:'canceled')         
-        proposal_freelancer_ids = active_proposals.pluck(:freelancer_id)        
-        redirect_to root_path, alert: "A proposta só pode ser cancelada 3 dias após ser submetida" unless 
-        proposal_freelancer_ids.exclude?(current_freelancer.id)    
-    end
+    def duplicate_proposal!        
+        proposals = Proposal.where(project_id:params[:project_id])
+        active_proposals = proposals.where.not(status:'canceled') 
+        freelancer_ids =  active_proposals.pluck(:freelancer_id)        
+        redirect_to root_path, alert: "Não é possível fazer duas propostas para o mesmo projeto" unless 
+        freelancer_ids.exclude?(current_freelancer.id)
+     end
 
 
 
     def show
         @proposal = Proposal.find(params[:id])
     end
+
+   
 
     def create
         @proposal = current_freelancer.proposals.new(proposal_params)
