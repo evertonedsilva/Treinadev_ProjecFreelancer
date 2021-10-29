@@ -116,7 +116,7 @@ describe 'frelancer delete proposal' do
         expect(page).to_not have_content('Cancelar proposta')
        
     end
-    it 'sucessfully and redirected to projects page' do
+    it 'unsucessfully because create more than 3 days before' do
              
         sirigueijo = Employer.create!(email: 'siri@burguer.br', password: '123456789')
         cozinha = Area.create!(name: 'Cozinha')                

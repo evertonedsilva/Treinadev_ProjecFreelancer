@@ -50,7 +50,7 @@ class ProposalsController < ApplicationController
 
     def expired_proposal_deadline!
         project = Project.find(params[:project_id])        
-        redirect_to root_path, alert: "A proposta só pode ser cancelada 3 dias após ser submetida" unless 
+        redirect_to root_path, alert: "A proposta não pode ser submetida fora do prazo" unless 
         project.limit_proposal > Time.now     
     end
 
