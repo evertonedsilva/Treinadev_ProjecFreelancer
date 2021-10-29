@@ -1,38 +1,44 @@
-class ProposalsController < ApplicationController
+class ProposalsController < ApplicationController    
+    
+    before_action :autenticate_proposal_edition!, only: [ :edit, :update, :cancel]
+   
+    before_action :autenticate_proposal_acept_reject!, only: [:accept, :reject_justify, :reject]
+    
+    before_action :expired_proposal_cancel!, only: [:cancel]
+   
+    before_action :expired_proposal_deadline!, only: [:create]
+    
+    before_action :duplicate_proposal!, only: [:create]
     before_action :authenticate_freelancer!, only: [:new, :create, :edit, :update, :cancel]
     before_action :authenticate_employer!, only: [ :accept, :reject_justify, :reject]
     before_action :authenticate_user!, only: [ :show ]
-    # just the proposal owner can edit proposal
-    before_action :autenticate_proposal_edition!, only: [ :edit, :update, :cancel]
-    # only the employer from the proposal can change proposal status
-    before_action :autenticate_proposal_acept_reject!, only: [ :accept, :reject_justify, :reject]
-    # proposal cound't be canceled by freelancer 3 days before proposal_creation
-    before_action :expired_proposal_cancel!, only: [:cancel]
-    # proposal could't be create out of limit_proposal
-    before_action :expired_proposal_deadline!, only: [:create]
-    # one freelancer could't submit more than one proposal for the same project
-    before_action :duplicate_proposal!, only: [:create]
-    
-
 
 
     def authenticate_user!
-        redirect_to root_path, alert: "Acesso apenas para usuarios logados" unless 
+        redirect_to root_path, alert: "Acesso apenas para usuários logados" unless 
         freelancer_signed_in? || employer_signed_in?
     end
 
     def autenticate_proposal_acept_reject!
         project_id = Proposal.find(params[:id]).project_id
         employer_id = Project.find(project_id).employer_id
-        redirect_to root_path, alert: "Apenas o dono do projeto pode aceitar ou rejeitar a proposta" unless 
-        current_employer.id ==  employer_id
+            if current_employer.blank?
+                redirect_to new_employer_session_path, alert: "Apenas o dono do projeto pode aceitar ou rejeitar a proposta"
+            else  
+                redirect_to new_employer_session_path, alert: "Apenas o dono do projeto pode aceitar ou rejeitar a proposta" unless 
+                current_employer.id ==  employer_id
+            end
     end
 
   
     def autenticate_proposal_edition!
         proposal = Proposal.find(params[:id])
-        redirect_to root_path, alert: "Apenas o dono da proposta pode editá-la" unless 
-        current_freelancer.id==proposal.freelancer_id
+        if current_freelancer.blank?
+            redirect_to new_freelancer_session_path, alert: "Apenas o dono da proposta pode editá-la"
+        else
+            redirect_to new_freelancer_session_path, alert: "Apenas o dono da proposta pode editá-la" unless
+            current_freelancer.id==proposal.freelancer_id
+        end
     end
 
     def expired_proposal_cancel!
