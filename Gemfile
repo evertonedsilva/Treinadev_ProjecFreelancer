@@ -27,12 +27,17 @@ gem 'devise'
 
 gem 'devise-i18n'
 
+gem 'timecop'
+
+
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'selenium-webdriver'
   gem 'rspec-rails', '~> 5.0.2'
   gem 'capybara', '3.35.3'
+  gem 'shoulda-matchers', '~> 5.0'
 end
 
 group :development do 

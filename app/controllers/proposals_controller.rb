@@ -9,6 +9,7 @@ class ProposalsController < ApplicationController
     before_action :expired_proposal_deadline!, only: [:create]
     
     before_action :duplicate_proposal!, only: [:create]
+    
     before_action :authenticate_freelancer!, only: [:new, :create, :edit, :update, :cancel]
     before_action :authenticate_employer!, only: [ :accept, :reject_justify, :reject]
     before_action :authenticate_user!, only: [ :show ]
@@ -43,7 +44,7 @@ class ProposalsController < ApplicationController
 
     def expired_proposal_cancel!
         proposal = Proposal.find(params[:id])
-        redirect_to root_path, alert: "A proposta só pode ser cancelada 3 dias de ser submetida" unless 
+        redirect_to root_path, alert: "Proposta só pode ser cancelada 3 dias após ser submetida" unless 
         proposal.submit_date > 3.day.ago        
     end
 

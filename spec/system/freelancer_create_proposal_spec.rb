@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'create a proposal' do
+describe 'freelance create a proposal' do
     it 'sucessufully' do
     sirigueijo = Employer.create!(email: 'siri@burguer.br', password: '123456789')        
     especialidade = Area.create!(name: 'Cozinheiro')        
